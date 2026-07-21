@@ -19,15 +19,14 @@
 - Cached GPT schema and digest validation: **PASS**
 - Unauthorized-number rejection tests: **PASS**
 - PUBLIC API provenance drawer: **PASS**
-- Automated tests: **16 passed**
+- Automated tests: **17 passed**
 - Browser console errors in final QA: **0**
 - Public export security/privacy audit: **PASS**
 
-## Publication status
+## Publication safeguards
 
-- Intended repository: `https://github.com/sdchae/ratin-build-week-demo`
-- Existing remote repository check: **Not found**
-- GitHub CLI availability: **Unavailable on this host**
-- Remote creation/push: **Not attempted**; no login or alternative credential flow was initiated.
-
-The local commit is the publication-ready source of truth. Install/authenticate GitHub CLI, confirm the target remains absent, then use the commands in the handoff report to create the public repository without force-pushing.
+- Publication target: `https://github.com/sdchae/ratin-build-week-demo`
+- Push source must be this standalone public export root, never the parent or private repository.
+- The target repository must not pre-exist when the publication run begins.
+- Create the target with public visibility and without seeded files, then push `main` without force.
+- Reconfirm the final remote visibility, commit SHA, rendered README links, and clean-clone validation after publication.

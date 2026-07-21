@@ -1,6 +1,6 @@
 {
   "schema_version": "ratin.public_export_manifest.v1",
-  "generated_at": "2026-07-21T21:26:38+00:00",
+  "generated_at": "2026-07-21T22:07:36+00:00",
   "manifest_scope_excludes": [
     "demo_data/public_export_manifest.json",
     "proofs/PUBLIC_EXPORT_AUDIT.json"
@@ -149,8 +149,8 @@
     },
     {
       "relative_path": "PUBLIC_REPOSITORY_CLOSEOUT.md",
-      "sha256": "b957f765a10829d61ab5568b6a620fb5236031fd1a1b0cf5854aeba3333f96b5",
-      "size_bytes": 1655
+      "sha256": "c4bee1e2f8f3235f52c2be6e2b3404b705b6f145432462cc0efce7914905fed5",
+      "size_bytes": 1624
     },
     {
       "relative_path": "PUBLIC_SOURCE_DISCLOSURE.md",
@@ -159,13 +159,13 @@
     },
     {
       "relative_path": "README.md",
-      "sha256": "31cc969f3d7033bf9d9bcb35f6fb4eac57acd4163f9f12ab867c3d9ce2999490",
+      "sha256": "cf80f5bb07546b794bdb660b3c98325921f342ea095dd2136499958a9721fa40",
       "size_bytes": 9483
     },
     {
       "relative_path": "requirements.txt",
-      "sha256": "ae288baeb868e276abfa1f5872ee18e3cfffe00f881a253ff31bff2345d0b094",
-      "size_bytes": 33
+      "sha256": "373d1b1d2c43504d00c9ebe7481db69cc6d681aa0f1ff9984a66bd1798e8e6b2",
+      "size_bytes": 47
     },
     {
       "relative_path": "run_demo.ps1",
@@ -224,8 +224,8 @@
     },
     {
       "relative_path": "tests/test_evidence_bindings.py",
-      "sha256": "f4654cca16fcfdc3ae79723134fad6ac28f18bbdc374096b18ec19efc8c26c72",
-      "size_bytes": 3929
+      "sha256": "da72b50c02f4c18a51b76f4144eb5d061d724b1055283ad21cb487e66fdd5074",
+      "size_bytes": 4127
     },
     {
       "relative_path": "tests/test_packet_schema.py",
@@ -239,8 +239,8 @@
     },
     {
       "relative_path": "THIRD_PARTY_NOTICES.md",
-      "sha256": "4e8ab8e849ebdf0fd7fbdb5ad1af52a1eabb92864d55fc49faea3ca86c1459e9",
-      "size_bytes": 1060
+      "sha256": "797a261a78f5f8cdd3e2cb3ff478de8f1f14db8f3092f437b66abd84503cf04f",
+      "size_bytes": 1127
     },
     {
       "relative_path": "tools/build_public_proofs.py",

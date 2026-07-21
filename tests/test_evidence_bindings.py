@@ -70,6 +70,12 @@ def test_public_pdf_digests_pages_text_and_bbox(demo_state):
             document.close()
 
 
+def test_evidence_page_renders_as_png(demo_state):
+    payload = demo_state.render_evidence_page("EV-012", 1, 2)
+    assert payload.startswith(b"\x89PNG\r\n\x1a\n")
+    assert len(payload) > 1_000
+
+
 def test_multi_target_binding_is_preserved(demo_state):
     item = next(row for row in demo_state.bindings["items"] if row["public_evidence_id"] == "EV-056")
     assert item["jump_mode"] == "BBOX_EXACT_MULTI"
@@ -99,4 +105,3 @@ def test_every_synthetic_pdf_page_has_disclosure(demo_state):
                     page.close()
         finally:
             document.close()
-

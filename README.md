@@ -145,7 +145,7 @@ Equivalent command:
 .\.venv\Scripts\python.exe -m pytest tests -q
 ```
 
-Current public validation: `16/16` tests passing.
+Current public validation: `17/17` tests passing.
 
 Regenerate non-hardcoding, jump, export-manifest, and security proofs with:
 
