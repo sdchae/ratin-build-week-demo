@@ -1,0 +1,58 @@
+{
+  "schema_version": "ratin.public_source_package_manifest.v1",
+  "case_id": "BUILD_WEEK_G082500500_ATTACHMENT_V2",
+  "public_notice_identifier": "G082500500",
+  "file_count": 5,
+  "files": [
+    {
+      "file_name": "01_public_notice_detail_sanitized.pdf",
+      "display_name": "Public Notice Detail - Sanitized",
+      "relative_path": "evidence/01_public_notice_detail_sanitized.pdf",
+      "sha256": "c4b827c6616ddf5f6e304724b20a9e8a8fc98b442ba7b47fb8f3c0ed6eb23902",
+      "size_bytes": 6579,
+      "original_format_role": "pdf",
+      "public_source_type": "sanitized_public_source",
+      "synthetic": false
+    },
+    {
+      "file_name": "02_bid_notice_rendering_sanitized.pdf",
+      "display_name": "Bid Notice (HWP Evidence Rendering) - Sanitized",
+      "relative_path": "evidence/02_bid_notice_rendering_sanitized.pdf",
+      "sha256": "7959a69f2b6fea3cd84f91040656351a70d3c9d7e3aa67b57cff651b6fa3aa6c",
+      "size_bytes": 3418,
+      "original_format_role": "hwp",
+      "public_source_type": "sanitized_public_source",
+      "synthetic": false
+    },
+    {
+      "file_name": "03_item_cost_worksheet_rendering.pdf",
+      "display_name": "Item and Cost Worksheet (XLSX Evidence Rendering)",
+      "relative_path": "evidence/03_item_cost_worksheet_rendering.pdf",
+      "sha256": "91aa24b46493e33f711e418efc1c54ec8b886f410928f26edf2a8d17a6bf6b60",
+      "size_bytes": 3816,
+      "original_format_role": "xlsx",
+      "public_source_type": "controlled_synthetic_exhibit",
+      "synthetic": true
+    },
+    {
+      "file_name": "04_contract_conditions_synthetic.pdf",
+      "display_name": "Contract Conditions - Controlled Synthetic Exhibit",
+      "relative_path": "evidence/04_contract_conditions_synthetic.pdf",
+      "sha256": "b0a9db77f338f451f60b6ab8b372d1833c59f5bc76a2b728b6cc0da25fe692c7",
+      "size_bytes": 3499,
+      "original_format_role": "pdf",
+      "public_source_type": "controlled_synthetic_exhibit",
+      "synthetic": true
+    },
+    {
+      "file_name": "05_special_conditions_synthetic.pdf",
+      "display_name": "Special Conditions - Controlled Synthetic Exhibit",
+      "relative_path": "evidence/05_special_conditions_synthetic.pdf",
+      "sha256": "b87e076dbbe1a3f5c5ea56f9336c4fe7b07a2aaf3413b11fd526c0bb898dbcf1",
+      "size_bytes": 3896,
+      "original_format_role": "pdf",
+      "public_source_type": "controlled_synthetic_exhibit",
+      "synthetic": true
+    }
+  ]
+}

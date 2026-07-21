@@ -1,0 +1,101 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "bid_entry_requirements": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 16,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "requirement_id": { "type": "string", "minLength": 1 },
+          "category": {
+            "type": "string",
+            "enum": ["Qualification Restriction", "License or Registration", "Required Document"]
+          },
+          "title": { "type": "string", "minLength": 1 },
+          "status": {
+            "type": "string",
+            "enum": [
+              "Requirement Confirmed",
+              "Timing Unclear",
+              "Conflicting Requirement",
+              "Not Found in Package",
+              "Manual Review Required"
+            ]
+          },
+          "required_or_conditional": {
+            "type": "string",
+            "enum": ["Required", "Conditional", "Not Established"]
+          },
+          "and_or_relation": {
+            "type": "string",
+            "enum": ["AND", "OR", "N/A", "Unclear"]
+          },
+          "valid_at_bid_deadline": {
+            "type": "string",
+            "enum": ["Yes", "No", "Unclear", "Not Applicable"]
+          },
+          "joint_venture_supplement_allowed": {
+            "type": "string",
+            "enum": ["Yes", "No", "Unclear", "Not Applicable"]
+          },
+          "timing": { "type": "string", "minLength": 1 },
+          "evidence_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "EV-012", "EV-048", "EV-021", "EV-024", "EV-033", "EV-056", "EV-057",
+                "EV-060", "EV-061", "EV-062", "EV-063", "EV-064", "EV-065"
+              ]
+            }
+          }
+        },
+        "required": [
+          "requirement_id",
+          "category",
+          "title",
+          "status",
+          "required_or_conditional",
+          "and_or_relation",
+          "valid_at_bid_deadline",
+          "joint_venture_supplement_allowed",
+          "timing",
+          "evidence_ids"
+        ]
+      }
+    },
+    "conflict_judgment": { "type": "string" },
+    "risk_interpretation": { "type": "string" },
+    "required_actions": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 4,
+      "items": { "type": "string" }
+    },
+    "clarification_question_to_issuer": { "type": "string" },
+    "english_decision_brief": { "type": "string" },
+    "evidence_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "EV-012", "EV-048", "EV-021", "EV-024", "EV-033", "EV-056", "EV-057",
+          "EV-060", "EV-061", "EV-062", "EV-063", "EV-064", "EV-065"
+        ]
+      }
+    }
+  },
+  "required": [
+    "bid_entry_requirements",
+    "conflict_judgment",
+    "risk_interpretation",
+    "required_actions",
+    "clarification_question_to_issuer",
+    "english_decision_brief",
+    "evidence_ids"
+  ]
+}

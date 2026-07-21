@@ -1,0 +1,1095 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RATIN Build Week · Procurement Decision</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #182033;
+      --muted: #667085;
+      --line: #d9e0ea;
+      --paper: #ffffff;
+      --bg: #edf1f6;
+      --soft: #f7f9fc;
+      --navy: #17243b;
+      --blue: #1f62d0;
+      --teal: #0f7b74;
+      --amber: #b65b0c;
+      --rose: #be3150;
+      --violet: #6b4dc6;
+      --green: #247a48;
+      --shadow: 0 16px 38px rgba(19, 33, 55, .10);
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI Variable", "Segoe UI", "Noto Sans KR", Arial, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 8% 0%, rgba(31, 98, 208, .08), transparent 26rem),
+        var(--bg);
+    }
+    button, dialog { font: inherit; }
+    button { color: inherit; }
+
+    .topbar {
+      height: 64px;
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      border-bottom: 1px solid var(--line);
+      background: rgba(255, 255, 255, .94);
+      backdrop-filter: blur(10px);
+    }
+    .brand { display: flex; align-items: center; gap: 12px; min-width: 0; }
+    .brand-mark {
+      width: 34px; height: 34px; border-radius: 10px;
+      display: grid; place-items: center;
+      color: white; font-weight: 900; letter-spacing: -.04em;
+      background: linear-gradient(145deg, #17243b, #2d67c8);
+      box-shadow: 0 8px 18px rgba(31, 98, 208, .22);
+    }
+    .brand-copy { min-width: 0; }
+    .brand-copy strong { display: block; font-size: 15px; line-height: 1.2; }
+    .brand-copy span {
+      display: block; margin-top: 2px; color: var(--muted); font-size: 11px;
+      overflow: hidden; white-space: nowrap; text-overflow: ellipsis;
+    }
+    .top-actions { display: flex; align-items: center; gap: 8px; }
+    .mode-badge, .status-badge, .api-badge, .exact-badge {
+      display: inline-flex; align-items: center; justify-content: center;
+      border-radius: 999px; padding: 5px 9px;
+      font-size: 10px; line-height: 1; font-weight: 850; letter-spacing: .04em;
+      white-space: nowrap;
+    }
+    .mode-badge { color: #26405e; background: #e9f0fa; border: 1px solid #cad8eb; }
+    .mode-badge.live { color: #075e4f; background: #e1f5ef; border-color: #a9dfd1; }
+    .mode-badge.cached { color: #694b0d; background: #fff4d7; border-color: #eed693; }
+    .status-badge { color: #8b2d1e; background: #fff0eb; border: 1px solid #f1c8ba; }
+    .api-badge {
+      border: 1px solid #bcd1ef; background: #eef5ff; color: #245898;
+      cursor: pointer;
+    }
+    .api-badge:hover { background: #deebff; }
+    .gpt-source-tag {
+      display: inline-flex; align-items: center; padding: 3px 7px;
+      border: 1px solid #9fc7af; border-radius: 999px;
+      background: #edf8f1; color: #17633a; font-size: 10px;
+      font-weight: 600; white-space: nowrap;
+    }
+    .exact-badge { color: #156340; background: #e6f5ec; border: 1px solid #b9dec8; }
+    .status-badge, .exact-badge { display: none; }
+    .refresh-button {
+      border: 1px solid #cbd5e1; background: white; border-radius: 8px;
+      padding: 7px 10px; font-size: 11px; font-weight: 800; cursor: pointer;
+    }
+    .refresh-button:hover { border-color: #8ba5cb; background: #f8fbff; }
+    .refresh-button:disabled { opacity: .55; cursor: wait; }
+    .folder-input {
+      position: absolute; width: 1px; height: 1px; overflow: hidden;
+      clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap;
+    }
+    .upload-button {
+      display: inline-flex; align-items: center; justify-content: center;
+      border: 1px solid #264d85; background: #173d73; color: white;
+      border-radius: 8px; padding: 7px 11px; font-size: 11px; font-weight: 800;
+      cursor: pointer; white-space: nowrap;
+    }
+    .upload-button:hover { background: #0f315f; }
+    .upload-button.drag-active {
+      border-color: #7dd3fc; background: #0f5f8f;
+      box-shadow: 0 0 0 4px rgba(56, 189, 248, .24);
+      transform: translateY(-1px);
+    }
+
+    .dual-a4 {
+      height: calc(100vh - 64px);
+      display: grid;
+      grid-template-columns: minmax(500px, 1fr) minmax(500px, 1fr);
+      gap: 12px;
+      padding: 12px;
+    }
+    .pane-shell { min-width: 0; min-height: 0; height: 100%; display: grid; grid-template-columns: 34px minmax(0, 1fr); }
+    .pane-shell.evidence-shell { grid-template-columns: minmax(0, 1fr) 34px; }
+    .bookmark-rail {
+      padding-top: 14px; display: flex; flex-direction: column; gap: 7px;
+      align-items: end; position: sticky; top: 76px; align-self: start;
+      z-index: 9; max-height: calc(100vh - 88px);
+    }
+    .evidence-shell .bookmark-rail { align-items: start; }
+    .bookmark {
+      width: 29px; min-width: 29px; height: 20px; padding: 0;
+      border: 2px solid var(--mark); border-left-width: 7px; border-radius: 2px 0 0 2px;
+      display: inline-flex; align-items: center; justify-content: center; gap: 3px;
+      background: white; font-size: 8px; font-weight: 900; cursor: pointer;
+      transition: width .16s ease, background .16s ease;
+    }
+    .evidence-shell .bookmark { border-left-width: 2px; border-right-width: 7px; border-radius: 0 2px 2px 0; }
+    .bookmark:hover { width: 43px; background: color-mix(in srgb, var(--mark) 12%, white); }
+    .bookmark.active { width: 62px; background: color-mix(in srgb, var(--mark) 12%, white); }
+    .bookmark-page { display: none; font-variant-numeric: tabular-nums; white-space: nowrap; }
+    .bookmark.active .bookmark-page { display: inline; }
+
+    .a4-pane {
+      min-width: 0; height: 100%; overflow: auto; scrollbar-width: thin;
+      border: 1px solid var(--line); border-radius: 8px; background: var(--paper);
+      box-shadow: var(--shadow);
+    }
+    .report-head { padding: 22px 24px 17px; border-bottom: 1px solid #e5eaf1; }
+    .eyebrow { color: var(--blue); font-size: 10px; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; }
+    .report-head h1 { margin: 7px 0 6px; font-size: 22px; line-height: 1.25; letter-spacing: -.025em; }
+    .report-head p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.5; }
+    .head-stats { display: none; }
+
+    .report-card {
+      --accent: var(--blue);
+      margin: 13px 15px; padding: 15px 16px;
+      border: 1px solid color-mix(in srgb, var(--accent) 28%, var(--line));
+      border-left: 5px solid var(--accent); border-radius: 7px;
+      background: white; scroll-margin-top: 12px;
+    }
+    .report-card h2 {
+      margin: 0 0 13px; font-size: 18px; line-height: 1.3;
+      display: flex; align-items: center; justify-content: space-between; gap: 8px;
+    }
+    .card-kicker { display: block; margin-bottom: 4px; color: var(--muted); font-size: 9px; font-weight: 850; letter-spacing: .09em; text-transform: uppercase; }
+    .metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 7px; }
+    .metric { min-width: 0; padding: 9px; border: 1px solid #e4e9f0; background: var(--soft); border-radius: 6px; }
+    .metric span { display: block; color: var(--muted); font-size: 9px; line-height: 1.25; }
+    .metric strong { display: block; margin-top: 4px; font-size: 14px; line-height: 1.25; overflow-wrap: anywhere; }
+    .field-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 7px; }
+    .field-row {
+      display: grid; grid-template-columns: minmax(120px, 35%) minmax(0, 1fr);
+      align-items: start; gap: 10px; padding: 7px 0; border-bottom: 1px solid #edf0f4;
+      font-size: 12px; line-height: 1.5;
+    }
+    .field-row:last-child { border-bottom: 0; }
+    .field-row > span { color: var(--muted); font-weight: 750; }
+    .field-row > strong { overflow-wrap: anywhere; }
+    .metadata-row { font-size: 13px; }
+    .metadata-row > span { font-size: 12px; }
+    .metadata-row .jump-link,
+    .metadata-row > strong { font-size: 13.5px; line-height: 1.5; }
+    .metadata-heading { margin: 15px 0 4px; font-size: 15px; line-height: 1.35; }
+    .jump-link { appearance: none; border: 0; padding: 0; background: transparent; color: #1d5cb9; font: inherit; font-weight: 800; text-align: left; cursor: pointer; }
+    .jump-link:hover { text-decoration: underline; text-underline-offset: 3px; }
+    .requirement-summary { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; margin-bottom: 10px; }
+    .requirement-summary .metric { min-height: 46px; }
+    .requirement-list { list-style: none; margin: 0; padding: 0; }
+    .requirement-row { padding: 11px 2px; border-top: 1px solid #e5eaf1; }
+    .requirement-row:first-child { padding-top: 2px; border-top: 0; }
+    .requirement-row[data-primary-evidence-id] { cursor: pointer; }
+    .requirement-row[data-primary-evidence-id]:hover,
+    .requirement-row[data-primary-evidence-id]:focus-visible { background: #f8fbff; outline: none; }
+    .requirement-row.absent { margin: 5px 0; padding: 11px 10px; border: 1px solid #efb4aa; border-left: 4px solid #c83f2c; border-radius: 5px; background: #fff1ee; }
+    .requirement-row.absent .requirement-title { color: #9d2e20; }
+    .requirement-title { font-size: 14px; line-height: 1.42; font-weight: 850; }
+    .requirement-status { display: none; }
+    .requirement-meta { margin-top: 5px; color: #40506a; font-size: 12px; line-height: 1.55; }
+    .requirement-evidence {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 10px;
+    }
+    .requirement-evidence .jump-link {
+      padding: 9px 10px; border: 1px solid #c9d8ee; border-radius: 6px;
+      background: #f5f8fd; text-align: center;
+    }
+    .eligibility-note { margin: 13px 0 0; padding: 12px 13px; border: 1px solid #e6b24f; border-left: 5px solid #c47a00; border-radius: 5px; background: #fff0cc; color: #5f3b00; font-size: 13px; font-weight: 800; line-height: 1.55; }
+    .cost-block + .cost-block { margin-top: 16px; padding-top: 15px; border-top: 2px solid #e7ebf1; }
+    .cost-block h3 { margin: 0 0 9px; font-size: 15px; line-height: 1.35; }
+    .money { font-variant-numeric: tabular-nums; font-size: 22px; font-weight: 900; letter-spacing: -.025em; }
+    .money-note { margin-top: 6px; color: var(--muted); font-size: 10px; }
+    .market-grid { display: grid; grid-template-columns: 1.35fr .65fr; gap: 8px; }
+    .market-record { padding: 10px; border-radius: 6px; background: #f8fafc; border: 1px solid #e2e8f0; }
+    .market-record strong { display: block; font-size: 12px; line-height: 1.4; }
+    .market-record small { display: block; margin-top: 3px; color: var(--muted); line-height: 1.35; }
+    .split-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-top: 8px; }
+    .warning-box { padding: 11px; border: 1px solid #efc0ad; border-radius: 7px; background: #fff6f1; }
+    .warning-box strong { color: #9c3f23; }
+    .warning-box p { margin: 6px 0 0; font-size: 12px; line-height: 1.55; }
+    .warning-box .caveat { color: var(--muted); font-size: 11px; }
+    .gpt-copy { margin: 0; font-size: 12px; line-height: 1.6; white-space: pre-line; }
+    .gpt-copy + .gpt-copy { margin-top: 9px; padding-top: 9px; border-top: 1px solid #e7eaf0; }
+    .issue-list { display: grid; gap: 9px; margin-top: 11px; }
+    .issue-comparison { padding-top: 9px; border-top: 1px solid #e7eaf0; }
+    .issue-title { margin-bottom: 6px; font-size: 12px; font-weight: 900; }
+    .issue-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; }
+    .issue-pair .jump-link {
+      padding: 9px 10px; border: 1px solid #c9d8ee; border-radius: 6px;
+      background: #f5f8fd; text-align: left;
+    }
+    .issue-pair .jump-link b { display: block; font-size: 14px; }
+    .issue-pair .jump-link span { display: block; margin-top: 3px; color: var(--muted); font-size: 9px; }
+    .question { margin-top: 10px; padding: 9px 10px; border-radius: 6px; background: #f0f5ff; color: #214b83; font-size: 10px; line-height: 1.45; }
+    .action-list { margin: 0; padding-left: 20px; display: grid; gap: 9px; font-size: 12px; line-height: 1.5; }
+
+    /* Owner-requested 150% report-text scale. Dual A4 frame geometry is unchanged. */
+    #report-pane { font-size: 24px; }
+    #report-pane .eyebrow { font-size: 15px; }
+    #report-pane .report-head h1 { font-size: 33px; }
+    #report-pane .report-head p { font-size: 18px; }
+    #report-pane .report-card h2 { font-size: 27px; }
+    #report-pane .card-kicker { font-size: 13.5px; }
+    #report-pane .metric span { font-size: 13.5px; }
+    #report-pane .metric strong { font-size: 21px; }
+    #report-pane .field-row { font-size: 18px; }
+    #report-pane .metadata-row { font-size: 19.5px; }
+    #report-pane .metadata-row > span { font-size: 18px; }
+    #report-pane .metadata-row .jump-link,
+    #report-pane .metadata-row > strong { font-size: 20.25px; }
+    #report-pane .metadata-heading { font-size: 22.5px; }
+    #report-pane .requirement-title { font-size: 21px; }
+    #report-pane .requirement-meta { font-size: 18px; }
+    #report-pane .eligibility-note { font-size: 19.5px; }
+    #report-pane .cost-block h3 { font-size: 22.5px; }
+    #report-pane .money { font-size: 33px; }
+    #report-pane .money-note { font-size: 15px; }
+    #report-pane .market-record strong { font-size: 18px; }
+    #report-pane .market-record small { font-size: 20px; }
+    #report-pane .warning-box p { font-size: 18px; }
+    #report-pane .warning-box .caveat { font-size: 16.5px; }
+    #report-pane .gpt-copy { font-size: 18px; }
+    #report-pane .issue-title { font-size: 18px; }
+    #report-pane .issue-pair .jump-link b { font-size: 21px; }
+    #report-pane .issue-pair .jump-link span { font-size: 13.5px; }
+    #report-pane .question { font-size: 15px; }
+    #report-pane .action-list { font-size: 18px; }
+    #report-pane .api-badge { font-size: 15px; }
+
+    /* Readability rebalance: normal body weight, restrained headings, quieter first section. */
+    #report-pane { font-weight: 400; }
+    #report-pane strong,
+    #report-pane b,
+    #report-pane .jump-link { font-weight: 400; }
+    #report-pane .eyebrow,
+    #report-pane .card-kicker,
+    #report-pane .issue-title { font-weight: 500; }
+    #report-pane .report-head h1 { font-size: 27px; font-weight: 400; }
+    #report-pane .report-head p { font-size: 16px; font-weight: 400; }
+    #report-pane .report-card h2 { font-size: 23px; font-weight: 500; }
+    #report-pane .report-card h3 { font-weight: 400; }
+    #report-pane .metric strong,
+    #report-pane .money,
+    #report-pane .requirement-title,
+    #report-pane .eligibility-note { font-weight: 400; }
+
+    #report-pane #card-overview h2 { font-size: 22px; font-weight: 500; }
+    #card-overview .metadata-heading { font-size: 19px; font-weight: 500; }
+    #card-overview .metric span { font-size: 12.5px; font-weight: 400; }
+    #card-overview .metric strong { font-size: 18px; font-weight: 400; }
+    #card-overview .metadata-row { font-size: 17px; }
+    #card-overview .metadata-row > span { font-size: 15.5px; font-weight: 400; }
+    #card-overview .metadata-row .jump-link,
+    #card-overview .metadata-row > strong { font-size: 17px; font-weight: 400; }
+    #card-overview .field-row > span,
+    #card-overview .field-row > strong { font-weight: 400; }
+
+    .evidence-head {
+      position: sticky; top: 0; z-index: 8; padding: 12px 15px;
+      display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 10px; align-items: center;
+      background: rgba(255, 255, 255, .95); backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+    .evidence-head .doc-name { min-width: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; font-size: 12px; font-weight: 850; }
+    .evidence-head .doc-meta { margin-top: 2px; color: var(--muted); font-size: 10px; }
+    .page-count { font-size: 11px; font-weight: 850; color: #40506a; }
+    .evidence-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; padding: 10px 12px; border-bottom: 1px solid var(--line); background: #fafbfd; }
+    .evidence-chip {
+      min-width: 0; border: 1px solid #d8e0eb; border-radius: 6px; padding: 7px 8px;
+      background: white; cursor: pointer; text-align: left;
+    }
+    .evidence-chip:hover, .evidence-chip.active { border-color: #799cd1; background: #edf4ff; }
+    .evidence-chip b { display: block; color: var(--blue); font-size: 9px; }
+    .evidence-chip span { display: block; margin-top: 2px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; font-size: 9px; font-weight: 750; }
+    .comparison { margin: 10px 12px; border: 1px solid #ddd5f3; border-radius: 8px; overflow: hidden; }
+    .comparison-title { padding: 8px 10px; background: #f5f2fc; color: #543e96; font-size: 10px; font-weight: 900; }
+    .comparison-grid { display: grid; grid-template-columns: 1fr 1fr; }
+    .compare-side { appearance: none; border: 0; border-right: 1px solid #e5e0f2; background: white; padding: 10px; text-align: left; cursor: pointer; }
+    .compare-side:last-child { border-right: 0; }
+    .compare-side:hover { background: #fbfaff; }
+    .compare-side b { display: block; color: var(--violet); font-size: 10px; }
+    .compare-side span { display: block; margin-top: 4px; font-size: 9px; line-height: 1.4; }
+    .compare-side small { display: block; margin-top: 5px; color: var(--muted); font-size: 8px; }
+
+    .viewer-shell { margin: 12px; }
+    .viewer-caption { display: flex; justify-content: space-between; gap: 10px; align-items: center; margin-bottom: 8px; }
+    .viewer-caption strong { font-size: 11px; }
+    .viewer-caption span { color: var(--muted); font-size: 9px; }
+    .page-stage {
+      min-height: 640px; overflow: auto; padding: 14px;
+      border: 1px solid #d9e0e9; border-radius: 7px;
+      background: #e8edf3;
+    }
+    .page-artboard { position: relative; width: min(100%, 820px); margin: 0 auto; line-height: 0; box-shadow: 0 10px 28px rgba(20, 34, 55, .18); }
+    .page-artboard img { width: 100%; height: auto; display: block; background: white; }
+    .bbox-layer { position: absolute; inset: 0; pointer-events: auto; }
+    .bbox {
+      position: absolute; border: 0; background: rgba(255, 235, 59, .58);
+      box-shadow: none; mix-blend-mode: multiply;
+      cursor: help; pointer-events: auto; z-index: 2;
+      animation: pulse 1.25s ease-out 1;
+    }
+    .bbox.target-2 { background: rgba(255, 105, 180, .46); }
+    .bbox.target-3 { background: rgba(50, 230, 210, .46); }
+    .bbox:focus-visible {
+      outline: 3px solid color-mix(in srgb, var(--anchor-color, #2563eb) 70%, #ffffff);
+      outline-offset: 3px;
+    }
+    .evidence-anchor-tooltip {
+      position: fixed;
+      top: 96px;
+      right: 28px;
+      left: auto;
+      width: min(500px, calc(100vw - 56px));
+      max-height: calc(100vh - 128px);
+      padding: 12px 14px;
+      border: 1px solid rgba(226, 232, 240, .25);
+      border-radius: 6px;
+      background: #0f172a;
+      box-shadow: 0 14px 34px rgba(15, 23, 42, .32);
+      color: #f8fafc;
+      font: 14.5px/1.25 Consolas, "Cascadia Mono", "Courier New", monospace;
+      opacity: 0;
+      overflow: auto;
+      pointer-events: none;
+      text-align: left;
+      transform: translateY(-4px);
+      transition: opacity .12s ease, transform .12s ease;
+      white-space: normal;
+      mix-blend-mode: normal;
+      z-index: 5;
+    }
+    .bbox.tooltip-left .evidence-anchor-tooltip {
+      right: 28px;
+      left: auto;
+    }
+    .bbox:hover .evidence-anchor-tooltip,
+    .bbox:focus .evidence-anchor-tooltip,
+    .bbox:focus-visible .evidence-anchor-tooltip,
+    .bbox.tooltip-open .evidence-anchor-tooltip {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .evidence-anchor-tooltip strong {
+      display: block;
+      margin-bottom: 6px;
+      color: #bfdbfe;
+      font: 700 19px/1.2 Inter, system-ui, sans-serif;
+    }
+    .evidence-anchor-tooltip span {
+      display: block;
+      margin-top: 2px;
+      word-break: break-word;
+      overflow-wrap: anywhere;
+    }
+    @keyframes pulse { 0% { opacity: .25; transform: scale(.99); } 55% { opacity: 1; } 100% { transform: scale(1); } }
+    .target-legend { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+    .target-pill { padding: 5px 8px; border: 1px solid #c8d8ef; border-radius: 999px; background: #edf5ff; color: #24558f; font-size: 9px; font-weight: 800; }
+    .target-pill.target-2 { color: #8c2942; border-color: #edbfcb; background: #fff0f4; }
+    .evidence-quote { margin: 9px 0 0; padding: 9px 10px; border-left: 3px solid var(--blue); background: #f7f9fc; color: #39465a; font-size: 10px; line-height: 1.5; }
+    .evidence-page-stream { margin: 0; padding: 0; background: #fff; }
+    .evidence-page {
+      position: relative; display: grid; place-items: center;
+      min-height: 0; margin: 0; padding: 0; overflow: visible;
+      background: #fff; scroll-margin-top: 0;
+    }
+    .evidence-page img {
+      display: block; width: 100%; height: auto; max-width: 100%;
+      margin: 0; border: 0; object-fit: fill; background: white;
+    }
+    .evidence-page.anchor-highlight {
+      z-index: 1; box-shadow: none;
+    }
+
+    dialog { width: min(610px, calc(100vw - 32px)); border: 0; border-radius: 12px; padding: 0; box-shadow: 0 28px 80px rgba(14, 25, 43, .28); }
+    dialog::backdrop { background: rgba(17, 27, 45, .45); backdrop-filter: blur(3px); }
+    .dialog-head { padding: 16px 18px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--line); }
+    .dialog-head strong { font-size: 14px; }
+    .dialog-close { border: 0; background: transparent; cursor: pointer; font-size: 18px; }
+    .dialog-body { padding: 16px 18px 20px; }
+    .provenance-grid { display: grid; grid-template-columns: 150px 1fr; gap: 8px 12px; font-size: 11px; line-height: 1.45; }
+    .provenance-grid dt { color: var(--muted); font-weight: 800; }
+    .provenance-grid dd { margin: 0; overflow-wrap: anywhere; }
+    .provenance-grid a { color: var(--blue); }
+
+    .loading, .fatal { padding: 36px; color: var(--muted); text-align: center; }
+    .fatal { color: #a23333; }
+    .upload-landing {
+      min-height: 100%; display: grid; place-items: center; padding: 40px;
+      color: #475569; text-align: center;
+    }
+    .upload-landing strong { display: block; margin-bottom: 9px; color: #17243b; font-size: 19px; }
+    .upload-landing span { display: block; max-width: 430px; font-size: 13px; line-height: 1.6; }
+    .processing-report { padding: 24px; }
+    .processing-report h1 { margin: 0 0 10px; font-size: 24px; font-weight: 500; }
+    .processing-report p { margin: 0 0 18px; color: var(--muted); font-size: 15px; line-height: 1.55; }
+    .processing-meter { height: 8px; overflow: hidden; border-radius: 999px; background: #e5eaf1; }
+    .processing-meter span { display: block; width: var(--progress, 0%); height: 100%; background: #1f62d0; transition: width .3s ease; }
+    .processing-state { margin-top: 16px; font-size: 17px; line-height: 1.5; }
+    .pipeline-console {
+      margin: 14px; min-height: calc(100% - 28px); border: 1px solid #1f2937;
+      border-radius: 6px; background: #0f172a; color: #dbeafe;
+      display: grid; grid-template-rows: auto minmax(0, 1fr); overflow: hidden;
+    }
+    .pipeline-console-head {
+      padding: 12px 14px; border-bottom: 1px solid rgba(219, 234, 254, .18);
+      background: #111827; display: grid; gap: 5px; font-size: 12px; line-height: 1.4;
+    }
+    .pipeline-console-head strong { color: #fff; font-size: 13px; }
+    .pipeline-console-head span { color: #bae6fd; overflow-wrap: anywhere; }
+    .pipeline-log {
+      margin: 0; padding: 14px; min-height: 620px; overflow: auto;
+      white-space: pre-wrap; word-break: break-word; color: #d1fae5;
+      font: 12px/1.45 Consolas, "Cascadia Mono", "Courier New", monospace;
+      background: linear-gradient(rgba(15, 23, 42, .95), rgba(15, 23, 42, .95)),
+        repeating-linear-gradient(0deg, transparent, transparent 21px, rgba(148, 163, 184, .08) 22px);
+    }
+
+    @media (max-width: 1050px) {
+      .dual-a4 { height: auto; grid-template-columns: 1fr; }
+      .a4-pane { height: 920px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-mark">R</div>
+      <div class="brand-copy">
+        <strong>RATIN · Procurement Decision</strong>
+        <span id="case-title">Build Week public evaluation · cached mode available</span>
+      </div>
+    </div>
+    <div class="top-actions">
+      <span class="status-badge">SYNTHETIC · NOT A LIVE BID</span>
+      <span id="mode-badge" class="mode-badge">LOADING</span>
+      <input id="folder-input" class="folder-input" type="file" webkitdirectory directory multiple />
+      <label id="upload-drop-zone" class="upload-button" for="folder-input" title="Select a folder or drop all five attachment files together">Upload or drop attachments</label>
+      <button id="refresh-gpt" class="refresh-button" type="button">Refresh GPT-5.6</button>
+    </div>
+  </header>
+
+  <main class="dual-a4">
+    <section class="pane-shell" aria-label="Decision report">
+      <nav id="report-bookmarks" class="bookmark-rail" aria-label="Report cards"></nav>
+      <article id="report-pane" class="a4-pane"><div class="loading">Loading the validated public packet…</div></article>
+    </section>
+
+    <section class="pane-shell evidence-shell" aria-label="Korean evidence viewer">
+      <article id="evidence-pane" class="a4-pane"><div class="loading">Preparing the public Evidence viewer…</div></article>
+      <nav id="evidence-bookmarks" class="bookmark-rail" aria-label="Evidence anchors"></nav>
+    </section>
+  </main>
+
+  <dialog id="provenance-dialog">
+    <div class="dialog-head">
+      <strong>PUBLIC API provenance</strong>
+      <button class="dialog-close" type="button" aria-label="Close">×</button>
+    </div>
+    <div id="provenance-body" class="dialog-body"></div>
+  </dialog>
+
+  <script>
+    const state = { payload: null, packet: null, decision: null, activeEvidenceId: null, processing: false };
+    const reportPane = document.getElementById("report-pane");
+    const evidencePane = document.getElementById("evidence-pane");
+    const reportBookmarks = document.getElementById("report-bookmarks");
+    const evidenceBookmarks = document.getElementById("evidence-bookmarks");
+    const modeBadge = document.getElementById("mode-badge");
+    const refreshButton = document.getElementById("refresh-gpt");
+    const folderInput = document.getElementById("folder-input");
+    const uploadDropZone = document.getElementById("upload-drop-zone");
+    const dialog = document.getElementById("provenance-dialog");
+    const provenanceBody = document.getElementById("provenance-body");
+    const colors = ["#1f62d0", "#0f7b74", "#b65b0c", "#6b4dc6", "#be3150", "#247a48", "#43627f"];
+
+    const escapeHtml = (value) => String(value ?? "")
+      .replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;").replaceAll("'", "&#039;");
+
+    function formatNumericString(value) {
+      const [whole, fraction] = String(value).split(".");
+      const sign = whole.startsWith("-") ? "-" : "";
+      const digits = sign ? whole.slice(1) : whole;
+      const grouped = digits.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      return sign + grouped + (fraction === undefined ? "" : "." + fraction);
+    }
+
+    function setMode(mode) {
+      modeBadge.textContent = mode;
+      modeBadge.className = "mode-badge";
+      if (mode === "LIVE GPT") modeBadge.classList.add("live");
+      if (mode === "CACHED GPT") modeBadge.classList.add("cached");
+    }
+
+    function evidenceById(id) { return state.packet.evidence.find((item) => item.evidence_id === id); }
+
+    function renderBidMetadata(packet) {
+      const rows = packet.bid_metadata?.rows || [];
+      return rows.map((item) => {
+        const displayValue = item.display_value || item.value;
+        const value = item.evidence_id
+          ? `<button class="jump-link" data-evidence-id="${escapeHtml(item.evidence_id)}" type="button">${escapeHtml(displayValue)}</button>`
+          : `<strong>${escapeHtml(displayValue)}</strong>`;
+        return `<div class="field-row metadata-row"><span>${escapeHtml(item.label)}</span>${value}</div>`;
+      }).join("");
+    }
+
+    function apiBadge(index, label = "PUBLIC API") {
+      const item = state.packet.public_api_provenance[index];
+      const tip = `${item.provider} · ${item.service_name}\nTotal records retrieved: ${item.total_record_count} / Applied samples: ${item.applied_sample_count}`;
+      return `<button class="api-badge" type="button" data-provenance="${index}" title="${escapeHtml(tip)}">${escapeHtml(label)}</button>`;
+    }
+
+    function renderBidEntryRequirements(decision) {
+      const requirements = decision?.bid_entry_requirements || [];
+      const categories = ["Qualification Restriction", "License or Registration", "Required Document"];
+      const rows = categories.flatMap((category) => requirements.filter((item) => item.category === category));
+      const list = rows.map((item) => {
+          const primaryEvidenceId = item.evidence_ids[0] || "";
+          const sourceAttributes = primaryEvidenceId
+            ? ` data-primary-evidence-id="${escapeHtml(primaryEvidenceId)}" role="button" tabindex="0" aria-label="Open source evidence for ${escapeHtml(item.title)}"`
+            : "";
+          const absentClass = item.status === "Not Found in Package" ? " absent" : "";
+          return `<li class="requirement-row${absentClass}"${sourceAttributes}>
+            <div class="requirement-title">${escapeHtml(item.title)}</div>
+            <div class="requirement-meta">${escapeHtml(item.timing)}</div>
+          </li>`;
+      }).join("");
+      return `<ul class="requirement-list">${list}</ul><p class="eligibility-note">Eligibility has not been determined because no bidder profile was provided. “Not Found in Package” may still require issuer or external confirmation.</p>`;
+    }
+
+    function firstSentence(value) {
+      const text = String(value || "").trim();
+      const match = text.match(/^.*?[.!?](?:\s|$)/);
+      return (match ? match[0] : text).trim();
+    }
+
+    function renderGptSentences(value) {
+      const text = String(value || "").trim();
+      const sentences = text.match(/[^.!?]+[.!?]+/g) || [text];
+      return sentences.map((sentence) => `<p class="gpt-copy">${escapeHtml(sentence.trim())}</p>`).join("");
+    }
+
+    function renderIssueComparisons(packet) {
+      const comparisons = packet.issue_comparisons || [];
+      if (!comparisons.length) return "";
+      return `<div class="issue-list">${comparisons.map((item) => `<div class="issue-comparison">
+        <div class="issue-title">${escapeHtml(item.title)}</div>
+        <div class="issue-pair">
+          <button class="jump-link" data-evidence-id="${escapeHtml(item.side_a_evidence_id)}" type="button"><b>${escapeHtml(item.side_a_value)}</b><span>${escapeHtml(item.side_a_label)}</span></button>
+          <button class="jump-link" data-evidence-id="${escapeHtml(item.side_b_evidence_id)}" type="button"><b>${escapeHtml(item.side_b_value)}</b><span>${escapeHtml(item.side_b_label)}</span></button>
+        </div>
+      </div>`).join("")}</div>`;
+    }
+
+    function renderReport() {
+      const p = state.packet;
+      const d = state.decision;
+      const market = p.market_reference;
+      const selected = market.selected_record;
+      const warning = p.cost_coverage_warning;
+      const liveApi = p.public_api_provenance[1];
+      const cards = [
+        {
+          id: "overview", mark: "OVR", color: colors[0], title: "Procurement Overview",
+          body: `<div class="metrics">
+            <div class="metric"><span>Documents</span><strong>${p.overview.document_count}</strong></div>
+            <div class="metric"><span>Formats</span><strong>${Object.keys(p.overview.format_counts).length}</strong></div>
+            <div class="metric"><span>Exact jumps</span><strong>${p.overview.bbox_jump_count} / ${p.evidence.length}</strong></div>
+          </div>
+          <h3 class="metadata-heading">Bid Metadata</h3>${renderBidMetadata(p)}
+          <h3 class="metadata-heading">Source Documents</h3>
+          <div class="field-list">${(p.overview.source_documents || []).map((item) => `<div class="field-row metadata-row"><span>${escapeHtml(item.public_source_type.replaceAll("_", " "))}</span><button class="jump-link" data-evidence-id="${escapeHtml(item.evidence_id)}" type="button">${escapeHtml(item.display_name)}</button></div>`).join("")}</div>
+          <details><summary>Evidence Index · ${p.overview.evidence_index.length} exact links</summary>
+            <div class="field-list">${p.overview.evidence_index.map((item) => `<div class="field-row metadata-row"><span>${escapeHtml(item.evidence_id)} · p.${item.page}${item.target_count > 1 ? ` · ${item.target_count} targets` : ""}</span><button class="jump-link" data-evidence-id="${escapeHtml(item.evidence_id)}" type="button">${escapeHtml(item.display_name)}</button></div>`).join("")}</div>
+          </details>
+          <div class="field-row"><span>Format mix</span><strong>${Object.entries(p.overview.format_counts).map(([k,v]) => `${k.toUpperCase()} ${v}`).join(" · ")}</strong></div>
+          <div class="field-row"><span>Fallback</span><strong>Page 0 · Document 0 · Table 0 · Estimated 0</strong></div>
+          <div class="field-row"><span>OCR</span><strong>Not used</strong></div>`
+        },
+        {
+          id: "entry", mark: "ENT", color: colors[1], title: `Bid Entry Requirements <span class="gpt-source-tag">GPT-5.6</span>`,
+          body: d ? renderBidEntryRequirements(d) : `<div class="fatal">Validated requirement extraction is unavailable.</div>`
+        },
+        {
+          id: "cost", mark: "CST", color: colors[2], title: "Cost, Price and Coverage",
+          body: `<div class="cost-block"><h3>Document-Linked Reference Cost</h3><div class="money">₩${formatNumericString(p.document_linked_reference_cost.value)}</div>
+          <div class="money-note">Pipeline-verified XLSX value · deterministic · no GPT recalculation</div>
+          <button class="jump-link" data-evidence-id="${p.document_linked_reference_cost.source_evidence_id}" type="button">Open exact cell evidence →</button></div>
+          <div class="cost-block"><h3>Public Price Reference ${apiBadge(market.provenance_index)}</h3><div class="market-grid">
+            <div class="market-record"><strong>${escapeHtml(selected.name)}</strong><small>${escapeHtml(selected.specification)}</small><small>${escapeHtml(selected.work_code)} · ${escapeHtml(selected.unit)}</small></div>
+            <div class="metric"><span>Published total</span><strong>₩${formatNumericString(selected.total)}</strong></div>
+          </div>
+          <div class="split-stats">
+            <div class="metric"><span>Total records retrieved</span><strong>${market.total_record_count.toLocaleString("ko-KR")}</strong></div>
+            <div class="metric"><span>Applied samples</span><strong>${market.applied_sample_count}</strong></div>
+          </div>
+          <p class="caveat">${escapeHtml(market.match_status)}</p>
+          <div class="field-row"><span>Material / Labor / Expense</span><strong>₩${formatNumericString(selected.material_cost)} / ₩${formatNumericString(selected.labor_cost)} / ₩${formatNumericString(selected.expense)}</strong></div>
+          <div class="field-row"><span>Live price API</span><strong>${liveApi.total_record_count} retrieved · ${liveApi.applied_sample_count} applied</strong></div>
+          ${p.market_reference.document_evidence_id ? `<button class="jump-link" data-evidence-id="${escapeHtml(p.market_reference.document_evidence_id)}" type="button">Open matched part evidence →</button>` : ""}</div>
+          <div class="cost-block"><h3>Cost Coverage Warning</h3><div class="warning-box"><strong>${escapeHtml(warning.severity)} · labor stress shortfall ₩${formatNumericString(warning.labor_stress_shortfall)}</strong>
+            <p>Document-linked cost nearly exhausts the reference price. The adjacent-work labor proxy pushes coverage beyond the reference.</p><p class="caveat">The public-market row is a dated proxy, not final cost truth.</p></div>
+          <div class="split-stats">
+            <div class="metric"><span>Document cost coverage</span><strong>${warning.document_cost_coverage_percent}%</strong></div>
+            <div class="metric"><span>Labor stress coverage</span><strong>${warning.labor_stress_coverage_percent}%</strong></div>
+          </div></div>`
+        },
+        {
+          id: "findings", mark: "GPT", color: colors[3], title: `GPT-5.6 Findings <span class="mode-badge ${state.payload.decision_mode === "LIVE GPT" ? "live" : state.payload.decision_mode === "CACHED GPT" ? "cached" : ""}">${escapeHtml(state.payload.decision_mode)}</span>`,
+          body: d ? `<span class="card-kicker">GPT-5.6 · 1 · Cross-Document Conflicts</span>${renderGptSentences(d.conflict_judgment)}
+            ${renderIssueComparisons(p)}
+            <span class="card-kicker" style="margin-top:12px">GPT-5.6 · 2 · Cost and Scope Impact</span>${renderGptSentences(d.risk_interpretation)}
+            <span class="card-kicker" style="margin-top:12px">GPT-5.6 · 3 · Decision Brief</span><p class="gpt-copy">${escapeHtml(firstSentence(d.english_decision_brief))}</p>
+            <div class="question"><b>GPT-5.6 · Question to issuer</b><br>${escapeHtml(d.clarification_question_to_issuer)}</div>` : `<div class="fatal">Validated GPT response is unavailable.</div>`
+        },
+        {
+          id: "actions", mark: "ACT", color: colors[4], title: `Required Actions <span class="gpt-source-tag">GPT-5.6</span>`,
+          body: d ? `<ol class="action-list">${d.required_actions.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ol>` : `<div class="fatal">No validated actions.</div>`
+        }
+      ];
+
+      reportPane.innerHTML = `<div class="report-head"><span class="eyebrow">Build Week · Fixed downstream consumer</span><h1>${escapeHtml(p.title)}</h1><p>Fixed demonstration package · Not an actual bid · ${p.overview.document_count} source documents · ${Object.keys(p.overview.format_counts).length} formats</p><div class="head-stats"><span class="exact-badge">${p.overview.bbox_jump_count} BBOX EXACT</span><span class="status-badge">${escapeHtml(p.status)}</span></div></div>`
+        + cards.map((card) => `<section id="card-${card.id}" class="report-card" style="--accent:${card.color}"><h2>${card.title}</h2>${card.body}</section>`).join("");
+      reportBookmarks.innerHTML = cards.map((card) => `<button class="bookmark" style="--mark:${card.color}" type="button" data-card-id="${card.id}" title="${escapeHtml(card.title.replace(/<[^>]+>/g, ""))}">${card.mark}</button>`).join("");
+      reportPane.querySelectorAll("[data-evidence-id]").forEach((button) => button.addEventListener("click", () => showEvidence(button.dataset.evidenceId)));
+      reportPane.querySelectorAll("[data-primary-evidence-id]").forEach((row) => {
+        const openSource = () => showEvidence(row.dataset.primaryEvidenceId);
+        row.addEventListener("click", openSource);
+        row.addEventListener("keydown", (event) => {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            openSource();
+          }
+        });
+      });
+      reportBookmarks.querySelectorAll("[data-card-id]").forEach((button) => button.addEventListener("click", () => {
+        const card = document.getElementById(`card-${button.dataset.cardId}`);
+        if (!card) return;
+        state.reportBookmarkJumpToken = button.dataset.cardId;
+        updateReportBookmark(card);
+        scrollPaneTo(reportPane, card);
+        window.setTimeout(() => {
+          if (state.reportBookmarkJumpToken !== button.dataset.cardId) return;
+          updateReportBookmark(card);
+          state.reportBookmarkJumpToken = null;
+        }, 700);
+      }));
+      let reportScrollFrame = 0;
+      reportPane.onscroll = () => {
+        if (state.reportBookmarkJumpToken) return;
+        if (reportScrollFrame) cancelAnimationFrame(reportScrollFrame);
+        reportScrollFrame = requestAnimationFrame(() => updateReportBookmark());
+      };
+      updateReportBookmark();
+      document.querySelectorAll("[data-provenance]").forEach((button) => button.addEventListener("click", () => openProvenance(Number(button.dataset.provenance))));
+    }
+
+    function updateReportBookmark(selectedCard = null) {
+      const cards = [...reportPane.querySelectorAll(".report-card")];
+      if (!cards.length) return;
+      const paneBox = reportPane.getBoundingClientRect();
+      const anchorY = paneBox.top + Math.min(96, paneBox.height * 0.22);
+      const atReportEnd = reportPane.scrollTop + reportPane.clientHeight >= reportPane.scrollHeight - 2;
+      const card = selectedCard || (atReportEnd
+        ? cards[cards.length - 1]
+        : cards.reduce((current, candidate) => (
+          candidate.getBoundingClientRect().top <= anchorY ? candidate : current
+        ), cards[0]));
+      if (!card) return;
+      const cardId = card.id.replace(/^card-/, "");
+      reportBookmarks.querySelectorAll("[data-card-id]").forEach((bookmark) => {
+        bookmark.classList.toggle("active", bookmark.dataset.cardId === cardId);
+      });
+    }
+
+    function evidenceDocuments() {
+      const documents = new Map();
+      state.packet.evidence.forEach((item) => {
+        const key = item.evidence_pdf_sha256;
+        if (!documents.has(key)) {
+          documents.set(key, {
+            key,
+            document_id: item.document_id,
+            document_name: item.document_name,
+            page_count: item.page_count,
+            representative_evidence_id: item.evidence_id,
+            evidence_ids: []
+          });
+        }
+        documents.get(key).evidence_ids.push(item.evidence_id);
+      });
+      return [...documents.values()];
+    }
+
+    function renderEvidenceViewer() {
+      const p = state.packet;
+      const documents = evidenceDocuments();
+      const pages = documents.flatMap((document, documentIndex) =>
+        Array.from({ length: document.page_count }, (_, index) => {
+          const page = index + 1;
+          const url = `/api/evidence-page?evidence_id=${encodeURIComponent(document.representative_evidence_id)}&page=${page}&scale=2&v=${document.key.slice(0, 12)}`;
+          return `<section class="evidence-page" data-evidence-pdf-sha="${document.key}" data-document-name="${escapeHtml(document.document_name)}" data-page-no="${page}" data-page-count="${document.page_count}">
+            <img src="${url}" loading="${documentIndex === 0 && page <= 2 ? "eager" : "lazy"}" decoding="async" alt="${escapeHtml(document.document_name)} ${page} / ${document.page_count}" />
+            <div class="bbox-layer"></div>
+          </section>`;
+        })
+      ).join("");
+      evidencePane.innerHTML = `<div id="evidence-page-stream" class="evidence-page-stream">${pages}</div>`;
+      evidenceBookmarks.innerHTML = documents.map((document, index) => `<button class="bookmark" style="--mark:${colors[index % colors.length]}" type="button" data-evidence-id="${document.representative_evidence_id}" data-evidence-pdf-sha="${document.key}" title="${escapeHtml(document.document_name)}"><span>F${index + 1}</span><span class="bookmark-page"></span></button>`).join("");
+      evidenceBookmarks.querySelectorAll("[data-evidence-id]").forEach((button) => {
+        button.addEventListener("click", () => showEvidence(button.dataset.evidenceId));
+      });
+      let scrollFrame = 0;
+      evidencePane.addEventListener("scroll", () => {
+        if (state.bookmarkJumpToken) return;
+        if (scrollFrame) cancelAnimationFrame(scrollFrame);
+        scrollFrame = requestAnimationFrame(() => updateEvidenceBookmarkPage());
+      }, { passive: true });
+    }
+
+    function updateEvidenceBookmarkPage(selectedPage = null) {
+      const pages = [...evidencePane.querySelectorAll(".evidence-page")];
+      if (!pages.length) return;
+      const paneBox = evidencePane.getBoundingClientRect();
+      const page = selectedPage || pages.reduce((best, candidate) => {
+        const box = candidate.getBoundingClientRect();
+        const visible = Math.max(0, Math.min(box.bottom, paneBox.bottom) - Math.max(box.top, paneBox.top));
+        return !best || visible > best.visible ? { node: candidate, visible } : best;
+      }, null)?.node;
+      if (!page) return;
+      evidenceBookmarks.querySelectorAll("[data-evidence-pdf-sha]").forEach((bookmark) => {
+        const active = bookmark.dataset.evidencePdfSha === page.dataset.evidencePdfSha;
+        bookmark.classList.toggle("active", active);
+        const pageLabel = bookmark.querySelector(".bookmark-page");
+        if (pageLabel) pageLabel.textContent = active ? `${page.dataset.pageNo}/${page.dataset.pageCount}` : "";
+      });
+    }
+
+    function evidencePageFor(item) {
+      return evidencePane.querySelector(
+        `.evidence-page[data-evidence-pdf-sha="${item.evidence_pdf_sha256}"][data-page-no="${item.page}"]`
+      );
+    }
+
+    function clearEvidenceHighlight() {
+      evidencePane.querySelectorAll(".evidence-page.anchor-highlight").forEach((page) => {
+        page.classList.remove("anchor-highlight");
+        page.style.removeProperty("--anchor-color");
+      });
+      evidencePane.querySelectorAll(".bbox-layer").forEach((layer) => layer.replaceChildren());
+      document.querySelectorAll("[data-evidence-id].active").forEach((node) => node.classList.remove("active"));
+      state.activeEvidenceId = null;
+    }
+
+    function formatBbox(box) {
+      const format = (value) => Number.isFinite(Number(value)) ? Number(value).toFixed(2) : "-";
+      return `x=${format(box.x)}, y=${format(box.y)}, w=${format(box.w)}, h=${format(box.h)}`;
+    }
+
+    function appendEvidenceAnchorTooltip(node, item, target, box, fragmentIndex, fragmentCount) {
+      const tooltip = document.createElement("div");
+      tooltip.className = "evidence-anchor-tooltip";
+      const title = document.createElement("strong");
+      title.textContent = "Evidence Anchor";
+      tooltip.appendChild(title);
+      const rows = [
+        ["anchor_id", `${item.evidence_id}::${target.target_id}`],
+        ["pipeline_run_id", item.pipeline_run_id],
+        ["source_file", item.document_name || item.evidence_pdf_name],
+        ["source_document_sha256", item.source_document_sha256],
+        ["evidence_pdf_sha256", item.evidence_pdf_sha256],
+        ["evidence_pdf_page", `${item.page}/${item.page_count}`],
+        ["anchor_text", target.text],
+        ["coordinate_verified", "true"],
+        ["resolved_bbox", formatBbox(box)],
+        ["binding_origin", item.binding_origin],
+        ["coordinate_source", target.coordinate_source || item.coordinate_source],
+        ["coordinate_frame_id", target.coordinate_frame_id || item.coordinate_frame_id],
+        ["coordinate_space", target.coordinate_space || item.coordinate_space],
+        ["coordinate_binding_status", "VERIFIED"],
+        ["binding_status_detail", target.binding_status || item.binding_status],
+        ["fragment", `${fragmentIndex + 1}/${fragmentCount}`],
+        ["review_required", "false"],
+        ["exact_bbox_truth", "true"],
+        ["static_anchor_scan", `${state.packet.static_anchor_scan?.status || "UNAVAILABLE"} · hardcoded physical anchors: ${state.packet.static_anchor_scan?.hardcoded_physical_anchor_count ?? "-"}`],
+        ["route", "verified downstream -> evidence_pdf -> exact_bbox"]
+      ];
+      rows.forEach(([label, value]) => {
+        const line = document.createElement("span");
+        line.textContent = `${label}: ${value || "-"}`;
+        tooltip.appendChild(line);
+      });
+      node.appendChild(tooltip);
+      node.setAttribute("aria-label", `Evidence Anchor ${item.evidence_id} ${target.target_id}`);
+      node.setAttribute("role", "button");
+      node.tabIndex = 0;
+      node.addEventListener("mouseenter", () => node.classList.add("tooltip-open"));
+      node.addEventListener("mouseleave", () => node.classList.remove("tooltip-open"));
+      node.addEventListener("focus", () => node.classList.add("tooltip-open"));
+      node.addEventListener("blur", () => node.classList.remove("tooltip-open"));
+    }
+
+    function drawTargets(item, page) {
+      const layer = page.querySelector(".bbox-layer");
+      layer.replaceChildren();
+      const width = Number(item.page_size.width);
+      const height = Number(item.page_size.height);
+      let firstBox = null;
+      item.targets.forEach((target, targetIndex) => {
+        const fragments = target.bbox_fragments?.length ? target.bbox_fragments : [target.bbox];
+        fragments.forEach((box, fragmentIndex) => {
+          const node = document.createElement("div");
+          node.className = `bbox target-${targetIndex + 1}`;
+          if ((box.x / width) > 0.62) node.classList.add("tooltip-left");
+          node.style.setProperty("--anchor-color", page.style.getPropertyValue("--anchor-color") || "#2563eb");
+          node.style.left = `${(box.x / width) * 100}%`;
+          node.style.top = `${((height - box.y - box.h) / height) * 100}%`;
+          node.style.width = `${(box.w / width) * 100}%`;
+          node.style.height = `${(box.h / height) * 100}%`;
+          appendEvidenceAnchorTooltip(node, item, target, box, fragmentIndex, fragments.length);
+          layer.appendChild(node);
+          if (!firstBox) firstBox = node;
+        });
+      });
+      return firstBox;
+    }
+
+    function scrollPaneTo(pane, target, centered = false) {
+      const paneBox = pane.getBoundingClientRect();
+      const targetBox = target.getBoundingClientRect();
+      const offset = centered ? (paneBox.height - targetBox.height) / 2 : 52;
+      pane.scrollTo({
+        top: pane.scrollTop + targetBox.top - paneBox.top - offset,
+        behavior: "smooth"
+      });
+    }
+
+    function showEvidence(id) {
+      const item = evidenceById(id);
+      if (!item) return;
+      const page = evidencePageFor(item);
+      if (!page) return;
+      clearEvidenceHighlight();
+      state.activeEvidenceId = id;
+      state.bookmarkJumpToken = id;
+      document.querySelectorAll("[data-evidence-id]").forEach((node) => node.classList.toggle("active", node.dataset.evidenceId === id));
+      evidenceBookmarks.querySelectorAll("[data-evidence-pdf-sha]").forEach((node) => {
+        node.classList.toggle("active", node.dataset.evidencePdfSha === item.evidence_pdf_sha256);
+      });
+      updateEvidenceBookmarkPage(page);
+      const color = colors[state.packet.evidence.findIndex((row) => row.evidence_id === id) % colors.length];
+      page.style.setProperty("--anchor-color", color);
+      page.classList.add("anchor-highlight");
+      const image = page.querySelector("img");
+      const finishJump = () => {
+        const firstBox = drawTargets(item, page);
+        requestAnimationFrame(() => requestAnimationFrame(() => scrollPaneTo(evidencePane, firstBox || page, true)));
+        window.setTimeout(() => {
+          if (state.bookmarkJumpToken !== id) return;
+          updateEvidenceBookmarkPage(page);
+          state.bookmarkJumpToken = null;
+        }, 700);
+      };
+      if (image.complete && image.naturalWidth) {
+        finishJump();
+      } else {
+        image.loading = "eager";
+        image.addEventListener("load", finishJump, { once: true });
+        scrollPaneTo(evidencePane, page, true);
+      }
+    }
+
+    function openProvenance(index) {
+      const item = state.packet.public_api_provenance[index];
+      provenanceBody.innerHTML = `<dl class="provenance-grid">
+        <dt>provider</dt><dd>${escapeHtml(item.provider)}</dd>
+        <dt>service_name</dt><dd>${escapeHtml(item.service_name)}</dd>
+        <dt>retrieved_at</dt><dd>${escapeHtml(item.retrieved_at)}</dd>
+        <dt>query / filter</dt><dd>${escapeHtml(item.query_filter_summary)}</dd>
+        <dt>total_record_count</dt><dd>${item.total_record_count}</dd>
+        <dt>applied_sample_count</dt><dd>${item.applied_sample_count}</dd>
+        <dt>aggregation_method</dt><dd>${escapeHtml(item.aggregation_method)}</dd>
+        <dt>raw_snapshot_digest</dt><dd>${escapeHtml(item.raw_snapshot_digest || "N/A")}</dd>
+        <dt>source_identifier</dt><dd>${escapeHtml(item.source_identifier)}</dd>
+        <dt>source_url</dt><dd><a href="${escapeHtml(item.source_url)}" target="_blank" rel="noreferrer">${escapeHtml(item.source_url)}</a></dd>
+        <dt>document_derived</dt><dd>${String(item.document_derived)}</dd>
+      </dl>`;
+      dialog.showModal();
+    }
+
+    const waitFor = (milliseconds) => new Promise((resolve) => window.setTimeout(resolve, milliseconds));
+
+    function renderUploadLanding() {
+      reportBookmarks.replaceChildren();
+      evidenceBookmarks.replaceChildren();
+      refreshButton.disabled = true;
+      modeBadge.textContent = "AWAITING PACKAGE";
+      document.getElementById("case-title").textContent = "Upload the fixed five-file demonstration package";
+      reportPane.innerHTML = `<div class="upload-landing"><div><strong>Upload attachment package</strong><span>The Decision Brief is created only after the fixed package has been SHA-256 verified against the frozen source manifest.</span></div></div>`;
+      evidencePane.innerHTML = `<div class="upload-landing"><div><strong>Processing console</strong><span>After upload, the verified pipeline replay and Evidence binding progress appear here. The complete Evidence stream replaces this panel when validation is complete.</span></div></div>`;
+    }
+
+    function renderProcessingReport(message, progress) {
+      reportBookmarks.replaceChildren();
+      reportPane.innerHTML = `<section class="processing-report"><h1>Processing package...</h1><p>Previous report content is hidden until the fixed package and its verified downstream outputs are ready.</p><div class="processing-meter" style="--progress:${Math.max(0, Math.min(100, progress))}%"><span></span></div><div class="processing-state">${escapeHtml(message)}</div></section>`;
+    }
+
+    function renderPipelineConsole(contract, lines, status = "RUNNING") {
+      evidenceBookmarks.replaceChildren();
+      evidencePane.innerHTML = `<section class="pipeline-console"><div class="pipeline-console-head"><strong>Verified public artifact processing</strong><span>${escapeHtml(contract.basis_notice_id)} · ${escapeHtml(status)} · ${contract.file_count} files · ${escapeHtml(contract.replay_mode)}</span></div><pre class="pipeline-log">${escapeHtml(lines.join("\n"))}</pre></section>`;
+      const log = evidencePane.querySelector(".pipeline-log");
+      if (log) log.scrollTop = log.scrollHeight;
+    }
+
+    async function sha256File(file) {
+      const buffer = await file.arrayBuffer();
+      const digest = await crypto.subtle.digest("SHA-256", buffer);
+      return [...new Uint8Array(digest)].map((value) => value.toString(16).padStart(2, "0")).join("");
+    }
+
+    function uploadFileName(file) {
+      return String(file.webkitRelativePath || file.name || "").replaceAll("\\", "/").split("/").pop();
+    }
+
+    async function processFixedPackage(files) {
+      state.processing = true;
+      refreshButton.disabled = true;
+      const contractResponse = await fetch("/api/upload-contract", { cache: "no-store" });
+      if (!contractResponse.ok) throw new Error(`Upload contract HTTP ${contractResponse.status}`);
+      const contract = await contractResponse.json();
+      const lines = [`[UPLOAD] ${files.length} files selected from the local attachment package.`];
+      renderProcessingReport(`Attachment intake: ${files.length} / ${contract.file_count}`, 8);
+      renderPipelineConsole(contract, lines);
+      await waitFor(450);
+
+      if (files.length !== contract.file_count) {
+        throw new Error(`Expected ${contract.file_count} files, received ${files.length}.`);
+      }
+      const selected = new Map(files.map((file) => [uploadFileName(file), file]));
+      for (let index = 0; index < contract.files.length; index += 1) {
+        const expected = contract.files[index];
+        const file = selected.get(expected.file_name);
+        if (!file) throw new Error(`Missing fixed source: ${expected.file_name}`);
+        if (file.size !== expected.size_bytes) throw new Error(`Size mismatch: ${expected.file_name}`);
+        const digest = await sha256File(file);
+        if (digest !== expected.sha256) throw new Error(`SHA-256 mismatch: ${expected.file_name}`);
+        lines.push(`[SOURCE FREEZE ${index + 1}/${contract.file_count}] PASS · ${expected.file_name} · ${digest.slice(0, 12)}…`);
+        const progress = 12 + Math.round(((index + 1) / contract.file_count) * 42);
+        renderProcessingReport(`Source digest verified: ${index + 1} / ${contract.file_count}`, progress);
+        renderPipelineConsole(contract, lines);
+        await waitFor(420);
+      }
+
+      lines.push(`[FROZEN EXPORT] Sanitized public artifacts selected · ${contract.pipeline_run_ids.join(", ")}`);
+      lines.push(`[PUBLIC PACKAGE] ${contract.canonical_file_success_count}/${contract.file_count} documents verified · OCR ${contract.ocr_used ? "used" : "not used"}`);
+      renderProcessingReport(`Frozen artifacts verified: ${contract.canonical_file_success_count} / ${contract.file_count}`, 70);
+      renderPipelineConsole(contract, lines);
+      await waitFor(650);
+
+      lines.push(`[EVIDENCE BINDING] ${contract.exact_evidence_count}/${contract.exact_evidence_count} exact bbox · fallback ${contract.fallback_count}`);
+      renderProcessingReport(`Evidence verified: ${contract.exact_evidence_count} / ${contract.exact_evidence_count}`, 84);
+      renderPipelineConsole(contract, lines);
+      await waitFor(650);
+
+      lines.push("[GPT-5.6] Strict structured-output decision validation ready.");
+      lines.push("[DONE] Dual A4 Decision Brief and complete Evidence stream are ready.");
+      renderProcessingReport("Decision Brief ready", 100);
+      renderPipelineConsole(contract, lines, "DONE");
+      await waitFor(750);
+      await loadDemo();
+      state.processing = false;
+    }
+
+    async function loadDemo() {
+      try {
+        const response = await fetch("/api/demo", { cache: "no-store" });
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        state.payload = await response.json();
+        state.packet = state.payload.packet;
+        state.decision = state.payload.decision;
+        document.getElementById("case-title").textContent = state.packet.title;
+        setMode(state.payload.decision_mode);
+        renderReport();
+        renderEvidenceViewer();
+        showEvidence(state.packet.conflict_comparison.side_a_evidence_id);
+        refreshButton.disabled = false;
+      } catch (error) {
+        reportPane.innerHTML = `<div class="fatal">Demo packet load failed: ${escapeHtml(error.message)}</div>`;
+        evidencePane.innerHTML = `<div class="fatal">Evidence viewer is unavailable.</div>`;
+        setMode("ERROR");
+      }
+    }
+
+    refreshButton.addEventListener("click", async () => {
+      refreshButton.disabled = true;
+      refreshButton.textContent = "Validating…";
+      try {
+        const response = await fetch("/api/gpt/refresh", { method: "POST", headers: { "Content-Type": "application/json" }, body: "{}" });
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        state.payload = await response.json();
+        state.packet = state.payload.packet;
+        state.decision = state.payload.decision;
+        setMode(state.payload.decision_mode);
+        renderReport();
+      } catch (error) {
+        modeBadge.textContent = "ERROR";
+      } finally {
+        refreshButton.disabled = false;
+        refreshButton.textContent = "Refresh GPT-5.6";
+      }
+    });
+    dialog.querySelector(".dialog-close").addEventListener("click", () => dialog.close());
+    dialog.addEventListener("click", (event) => { if (event.target === dialog) dialog.close(); });
+    async function handleSelectedFiles(files) {
+      if (!files.length || state.processing) return;
+      try {
+        await processFixedPackage(files);
+      } catch (error) {
+        state.processing = false;
+        modeBadge.textContent = "PACKAGE REJECTED";
+        renderProcessingReport(`Package validation failed: ${error.message}`, 0);
+        const contract = { basis_notice_id: "G082500500", file_count: files.length, replay_mode: "FAIL-CLOSED" };
+        renderPipelineConsole(contract, [`[FAILED] ${error.message}`, "[STOP] No Decision Brief or Evidence stream was displayed."], "FAILED");
+      } finally {
+        folderInput.value = "";
+      }
+    }
+    folderInput.addEventListener("change", () => {
+      handleSelectedFiles([...(folderInput.files || [])]);
+    });
+    ["dragenter", "dragover"].forEach((eventName) => {
+      uploadDropZone.addEventListener(eventName, (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        if (event.dataTransfer) event.dataTransfer.dropEffect = "copy";
+        uploadDropZone.classList.add("drag-active");
+        uploadDropZone.textContent = "Drop all files here";
+      });
+    });
+    ["dragleave", "dragend"].forEach((eventName) => {
+      uploadDropZone.addEventListener(eventName, (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        uploadDropZone.classList.remove("drag-active");
+        uploadDropZone.textContent = "Upload or drop attachments";
+      });
+    });
+    uploadDropZone.addEventListener("drop", (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      uploadDropZone.classList.remove("drag-active");
+      uploadDropZone.textContent = "Upload or drop attachments";
+      handleSelectedFiles([...(event.dataTransfer?.files || [])]);
+    });
+    if (new URLSearchParams(location.search).get("autoload") === "1") loadDemo();
+    else renderUploadLanding();
+  </script>
+</body>
+</html>

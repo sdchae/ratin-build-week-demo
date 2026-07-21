@@ -1,0 +1,90 @@
+{
+  "schema": "ratin.public_gpt_cache.v1",
+  "status": "VALID",
+  "model": "gpt-5.6",
+  "returned_model": "gpt-5.6-sol",
+  "decision": {
+    "bid_entry_requirements": [
+      {
+        "requirement_id": "REQ-01",
+        "category": "Qualification Restriction",
+        "title": "Small-business confirmation",
+        "status": "Timing Unclear",
+        "required_or_conditional": "Required",
+        "and_or_relation": "AND",
+        "valid_at_bid_deadline": "Unclear",
+        "joint_venture_supplement_allowed": "Unclear",
+        "timing": "Possession is required, but validity timing is not expressly stated.",
+        "evidence_ids": [
+          "EV-061"
+        ]
+      },
+      {
+        "requirement_id": "REQ-02",
+        "category": "License or Registration",
+        "title": "Qualified equipment registration for seawater intake pumps",
+        "status": "Timing Unclear",
+        "required_or_conditional": "Required",
+        "and_or_relation": "AND",
+        "valid_at_bid_deadline": "Unclear",
+        "joint_venture_supplement_allowed": "Unclear",
+        "timing": "Registration is required, but validity timing is not expressly stated.",
+        "evidence_ids": [
+          "EV-062"
+        ]
+      },
+      {
+        "requirement_id": "REQ-03",
+        "category": "Required Document",
+        "title": "Bid application documents",
+        "status": "Manual Review Required",
+        "required_or_conditional": "Required",
+        "and_or_relation": "N/A",
+        "valid_at_bid_deadline": "Yes",
+        "joint_venture_supplement_allowed": "Not Applicable",
+        "timing": "Submission deadline: 2026-01-07 15:00. The supplied excerpt shows only the section heading, not the document list.",
+        "evidence_ids": [
+          "EV-060",
+          "EV-063"
+        ]
+      },
+      {
+        "requirement_id": "REQ-04",
+        "category": "Required Document",
+        "title": "Manufacturer technical support letter",
+        "status": "Not Found in Package",
+        "required_or_conditional": "Not Established",
+        "and_or_relation": "N/A",
+        "valid_at_bid_deadline": "Not Applicable",
+        "joint_venture_supplement_allowed": "Not Applicable",
+        "timing": "No requirement is established by the supplied evidence.",
+        "evidence_ids": []
+      }
+    ],
+    "conflict_judgment": "Three conflicting requirements were identified across the package. Select either side to inspect its exact source.",
+    "risk_interpretation": "The stricter 2-hour response condition may require additional standby staffing. The 49-day delivery term and quantity-unit discrepancy require reconciliation.",
+    "required_actions": [
+      "Confirm possession and validity timing for every required registration, certificate, and qualification before 2026-01-07 15:00.",
+      "Prepare the online application, bid-security document, and qualification evidence for submission by 2026-01-07 15:00.",
+      "Price and plan conservatively for the 2-hour response and 49-day delivery terms until clarified.",
+      "Resolve the 42 EA / 42식 quantity-unit discrepancy before pricing and submission."
+    ],
+    "clarification_question_to_issuer": "Which emergency site-response condition has priority: arrival within 4 hours or within 2 hours?",
+    "english_decision_brief": "Bid entry requires a small-business confirmation and qualified equipment registration, with validity timing unclear. The detailed document list requires manual review. No bidder eligibility determination is possible without a bidder profile. Response, delivery, and quantity-unit conflicts remain unresolved.",
+    "evidence_ids": [
+      "EV-012",
+      "EV-048",
+      "EV-021",
+      "EV-024",
+      "EV-056",
+      "EV-057",
+      "EV-060",
+      "EV-061",
+      "EV-062",
+      "EV-063"
+    ]
+  },
+  "source_digest": "bf59f919f69ba80b6a5ebbcfa6bd9e5b9337aaac9058744e7f02d5ac07c3b730",
+  "schema_digest": "8c01dad56f3e61780f6294b16acad167dcf382ffa4a7c61a2faf2873b0518601",
+  "prompt_digest": "eb312497776fcf7c8f2ef9a338c94a9482a38f55619ab64959fa323b5807fccc"
+}

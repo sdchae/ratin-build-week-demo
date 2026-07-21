@@ -1,0 +1,240 @@
+{
+  "schema_version": "ratin.public_api_provenance.v1",
+  "items": [
+    {
+      "provenance_id": "PUBLIC-STANDARD-MARKET",
+      "provider": "조달청",
+      "service_name": "공사원가 표준시장단가 공공데이터",
+      "retrieved_at": "2026-06-11 21:35:13 +09:00",
+      "query_filter_summary": "품명~배송관부설및철거(침설관); 규격~고무슬리브접합; lowest_total",
+      "total_record_count": 6263,
+      "applied_sample_count": 1,
+      "aggregation_method": "semantic filter 후 단일 인접 공종 proxy; 평균·재계산 없음",
+      "raw_snapshot_digest": "9e44aabfe94356a95cbc4a9ad528d64b9a9c8a6e1c6f139b668a9957cc91c4af",
+      "source_url": "https://api.odcloud.kr/api/15151298/v1",
+      "source_identifier": "15151298/v1::COA020520000",
+      "document_derived": false,
+      "candidate_only": true,
+      "final_cost_truth": false,
+      "published_date": "2025-08-04",
+      "selected_record": {
+        "work_code": "COA020520000",
+        "name": "배송관부설및철거(침설관)",
+        "specification": "D760㎜×6m(고무슬리브접합)(크레인(트럭)15톤)",
+        "unit": "SET",
+        "material_cost": "6904",
+        "labor_cost": "107402",
+        "expense": "34864",
+        "total": "149170"
+      },
+      "selector_candidate_count": 1
+    },
+    {
+      "provenance_id": "PUBLIC-LIVE-PRICE",
+      "provider": "조달청",
+      "service_name": "가격정보 조회 서비스",
+      "retrieved_at": "2026-07-22T03:11:29+09:00",
+      "query_filter_summary": "상품명 베어링·슬리브·펌프, 각 20건 제한",
+      "total_record_count": 18,
+      "applied_sample_count": 1,
+      "aggregation_method": "API-only sleeve query; latest published date, then highest price; no exact document-item match asserted",
+      "raw_snapshot_digest": "d5291f1842f352b49107ee1aedf7d6df234ed6cb2440c8ec211c42c24fb0279b",
+      "source_url": "https://apis.data.go.kr/1230000/ao/PriceInfoService/getPriceInfoListFcltyCmmnMtrilElctyIrmc",
+      "source_identifier": "PriceInfoService::getPriceInfoListFcltyCmmnMtrilElctyIrmc",
+      "document_derived": false,
+      "status": "OK",
+      "queries": [
+        {
+          "field": "krnPrdctNm",
+          "keyword": "베어링",
+          "result_code": "00",
+          "result_message": "정상",
+          "total_record_count": 0,
+          "returned_record_count": 0,
+          "items": []
+        },
+        {
+          "field": "krnPrdctNm",
+          "keyword": "슬리브",
+          "result_code": "00",
+          "result_message": "정상",
+          "total_record_count": 18,
+          "returned_record_count": 18,
+          "items": [
+            {
+              "product_class": "압착슬리브",
+              "product_name": "압착슬리브, 동압착, 2.5㎟, 저압용",
+              "unit": "개",
+              "price": "17",
+              "price_division": "기타가격",
+              "vat": "부가가치세별도",
+              "notice_date": "2024-10-16 17:15:15"
+            },
+            {
+              "product_class": "압착슬리브",
+              "product_name": "압착슬리브, 동압착, 95㎟, 저압용",
+              "unit": "개",
+              "price": "544",
+              "price_division": "기타가격",
+              "vat": "부가가치세별도",
+              "notice_date": "2024-10-16 17:15:15"
+            },
+            {
+              "product_class": "압착슬리브",
+              "product_name": "압착슬리브, 동압착, 25㎟, 저압용",
+              "unit": "개",
+              "price": "120",
+              "price_division": "기타가격",
+              "vat": "부가가치세별도",
+              "notice_date": "2024-10-16 17:15:15"
+            },
+            {
+              "product_class": "압착슬리브",
+              "product_name": "압착슬리브, 동압착, 1.5㎟, 저압용",
+              "unit": "개",
+              "price": "11",
+              "price_division": "기타가격",
+              "vat": "부가가치세별도",
+              "notice_date": "2024-10-16 17:15:15"
+            },
+            {
+              "product_class": "압착슬리브",
+              "product_name": "압착슬리브, 동압착, 35㎟, 저압용",
+              "unit": "개",
+              "price": "171",
+              "price_division": "기타가격",
+              "vat": "부가가치세별도",
+              "notice_date": "2024-10-16 17:15:15"
+            },
+            {
+              "product_class": "압착슬리브",
+              "product_name": "압착슬리브, 동압착, 4㎟, 저압용",
+              "unit": "개",
+              "price": "28",
+              "price_division": "기타가격",
+              "vat": "부가가치세별도",
+              "notice_date": "2024-10-16 17:15:15"
+            },
+            {
+              "product_class": "압착슬리브",
+              "product_name": "압착슬리브, 동압착, 16㎟, 저압용",
+              "unit": "개",
+              "price": "91",
+              "price_division": "기타가격",
+              "vat": "부가가치세별도",
+              "notice_date": "2024-10-16 17:15:15"
+            },
+            {
+              "product_class": "압착슬리브",
+              "product_name": "압착슬리브, 동압착, 10㎟, 저압용",
+              "unit": "개",
+              "price": "55",
+              "price_division": "기타가격",
+              "vat": "부가가치세별도",
+              "notice_date": "2024-10-16 17:15:15"
+            },
+            {
+              "product_class": "압착슬리브",
+              "product_name": "압착슬리브, 동압착, 185㎟, 저압용",
+              "unit": "개",
+              "price": "1481",
+              "price_division": "기타가격",
+              "vat": "부가가치세별도",
+              "notice_date": "2024-10-16 17:15:15"
+            },
+            {
+              "product_class": "압착슬리브",
+              "product_name": "압착슬리브, 동압착, 6㎟, 저압용",
+              "unit": "개",
+              "price": "34",
+              "price_division": "기타가격",
+              "vat": "부가가치세별도",
+              "notice_date": "2024-10-16 17:15:15"
+            },
+            {
+              "product_class": "열수축관",
+              "product_name": "열수축튜브, 열수축슬리브, 심선, 12.7~5",
+              "unit": "개",
+              "price": "13825",
+              "price_division": "기타가격",
+              "vat": "부가가치세별도",
+              "notice_date": "2024-10-16 17:15:15"
+            },
+            {
+              "product_class": "열수축관",
+              "product_name": "열수축튜브, 열수축슬리브, 심선, 9.5~3.4",
+              "unit": "개",
+              "price": "10514",
+              "price_division": "기타가격",
+              "vat": "부가가치세별도",
+              "notice_date": "2024-10-16 17:15:15"
+            },
+            {
+              "product_class": "열수축관",
+              "product_name": "열수축슬리브, 심선 9.5-3.4",
+              "unit": "개",
+              "price": "10514",
+              "price_division": "기타가격",
+              "vat": "부가가치세별도",
+              "notice_date": "2025-04-28 00:00:00"
+            },
+            {
+              "product_class": "열수축관",
+              "product_name": "열수축슬리브, 심선 12.7-5",
+              "unit": "개",
+              "price": "13825",
+              "price_division": "기타가격",
+              "vat": "부가가치세별도",
+              "notice_date": "2025-04-28 00:00:00"
+            },
+            {
+              "product_class": "열수축관",
+              "product_name": "열수축슬리브, 심선 9.5-3.4",
+              "unit": "개",
+              "price": "10507",
+              "price_division": "기타가격",
+              "vat": "부가가치세별도",
+              "notice_date": "2025-10-23 00:00:00"
+            },
+            {
+              "product_class": "열수축관",
+              "product_name": "열수축슬리브, 심선 12.7-5",
+              "unit": "개",
+              "price": "13816",
+              "price_division": "기타가격",
+              "vat": "부가가치세별도",
+              "notice_date": "2025-10-23 00:00:00"
+            },
+            {
+              "product_class": "열수축관",
+              "product_name": "열수축슬리브, 심선 9.5-3.4",
+              "unit": "개",
+              "price": "10714",
+              "price_division": "기타가격",
+              "vat": "부가가치세별도",
+              "notice_date": "2026-04-20 00:00:00"
+            },
+            {
+              "product_class": "열수축관",
+              "product_name": "열수축슬리브, 심선 12.7-5",
+              "unit": "개",
+              "price": "14088",
+              "price_division": "기타가격",
+              "vat": "부가가치세별도",
+              "notice_date": "2026-04-20 00:00:00"
+            }
+          ]
+        },
+        {
+          "field": "krnPrdctNm",
+          "keyword": "펌프",
+          "result_code": "00",
+          "result_message": "정상",
+          "total_record_count": 0,
+          "returned_record_count": 0,
+          "items": []
+        }
+      ]
+    }
+  ]
+}

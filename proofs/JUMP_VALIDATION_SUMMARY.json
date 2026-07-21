@@ -1,0 +1,11 @@
+{
+  "schema_version": "ratin.public_jump_validation.v1",
+  "status": "PASS",
+  "runtime_bound_exact_evidence_links": 21,
+  "total_evidence_links": 21,
+  "exact_target_count": 26,
+  "multi_target_evidence_count": 1,
+  "fallback_jumps": 0,
+  "unverified_evidence_used": 0,
+  "errors": []
+}

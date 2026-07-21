@@ -1,0 +1,669 @@
+{
+  "schema_version": "ratin.public_evidence_binding_manifest.v1",
+  "case_id": "BUILD_WEEK_G082500500_ATTACHMENT_V2",
+  "total_evidence": 21,
+  "bbox_exact": 21,
+  "fallback_jumps": 0,
+  "unverified_evidence": 0,
+  "items": [
+    {
+      "schema_version": "ratin.public_evidence_binding.v1",
+      "public_evidence_id": "EV-012",
+      "display_document_name": "Contract Conditions - Controlled Synthetic Exhibit",
+      "relative_evidence_pdf_path": "evidence/04_contract_conditions_synthetic.pdf",
+      "source_document_sha256": "b0a9db77f338f451f60b6ab8b372d1833c59f5bc76a2b728b6cc0da25fe692c7",
+      "evidence_pdf_sha256": "b0a9db77f338f451f60b6ab8b372d1833c59f5bc76a2b728b6cc0da25fe692c7",
+      "page": 1,
+      "page_count": 1,
+      "targets": [
+        {
+          "label": "Contract response time",
+          "matched_text": "긴급 현장요청을 접수한 계약상대자는 요청 접수 시각부터 4시간 이내 현장에 도착해야 한다.",
+          "bbox": {
+            "x": 52.909,
+            "y": 645.4308,
+            "w": 372.663,
+            "h": 7.488
+          }
+        }
+      ],
+      "coordinate_space": "evidence_pdf_page_space",
+      "jump_mode": "BBOX_EXACT",
+      "binding_origin": "public_exact_text_binder",
+      "binding_status": "VERIFIED",
+      "exact_bbox_truth": true,
+      "public_source_type": "controlled_synthetic_exhibit",
+      "synthetic": true
+    },
+    {
+      "schema_version": "ratin.public_evidence_binding.v1",
+      "public_evidence_id": "EV-048",
+      "display_document_name": "Special Conditions - Controlled Synthetic Exhibit",
+      "relative_evidence_pdf_path": "evidence/05_special_conditions_synthetic.pdf",
+      "source_document_sha256": "b87e076dbbe1a3f5c5ea56f9336c4fe7b07a2aaf3413b11fd526c0bb898dbcf1",
+      "evidence_pdf_sha256": "b87e076dbbe1a3f5c5ea56f9336c4fe7b07a2aaf3413b11fd526c0bb898dbcf1",
+      "page": 1,
+      "page_count": 1,
+      "targets": [
+        {
+          "label": "Special-condition response time",
+          "matched_text": "긴급 현장요청을 접수한 계약상대자는 요청 접수 시각부터 2시간 이내 현장에 도착해야 한다.",
+          "bbox": {
+            "x": 52.909,
+            "y": 645.4308,
+            "w": 372.663,
+            "h": 7.488
+          }
+        }
+      ],
+      "coordinate_space": "evidence_pdf_page_space",
+      "jump_mode": "BBOX_EXACT",
+      "binding_origin": "public_exact_text_binder",
+      "binding_status": "VERIFIED",
+      "exact_bbox_truth": true,
+      "public_source_type": "controlled_synthetic_exhibit",
+      "synthetic": true
+    },
+    {
+      "schema_version": "ratin.public_evidence_binding.v1",
+      "public_evidence_id": "EV-021",
+      "display_document_name": "Special Conditions - Controlled Synthetic Exhibit",
+      "relative_evidence_pdf_path": "evidence/05_special_conditions_synthetic.pdf",
+      "source_document_sha256": "b87e076dbbe1a3f5c5ea56f9336c4fe7b07a2aaf3413b11fd526c0bb898dbcf1",
+      "evidence_pdf_sha256": "b87e076dbbe1a3f5c5ea56f9336c4fe7b07a2aaf3413b11fd526c0bb898dbcf1",
+      "page": 1,
+      "page_count": 1,
+      "targets": [
+        {
+          "label": "Modified delivery term",
+          "matched_text": "납품기한은 계약 후 49일 이내로 한다.",
+          "bbox": {
+            "x": 53.224,
+            "y": 576.4398,
+            "w": 152.991,
+            "h": 7.479
+          }
+        }
+      ],
+      "coordinate_space": "evidence_pdf_page_space",
+      "jump_mode": "BBOX_EXACT",
+      "binding_origin": "public_exact_text_binder",
+      "binding_status": "VERIFIED",
+      "exact_bbox_truth": true,
+      "public_source_type": "controlled_synthetic_exhibit",
+      "synthetic": true
+    },
+    {
+      "schema_version": "ratin.public_evidence_binding.v1",
+      "public_evidence_id": "EV-024",
+      "display_document_name": "Public Notice Detail - Sanitized",
+      "relative_evidence_pdf_path": "evidence/01_public_notice_detail_sanitized.pdf",
+      "source_document_sha256": "c4b827c6616ddf5f6e304724b20a9e8a8fc98b442ba7b47fb8f3c0ed6eb23902",
+      "evidence_pdf_sha256": "c4b827c6616ddf5f6e304724b20a9e8a8fc98b442ba7b47fb8f3c0ed6eb23902",
+      "page": 1,
+      "page_count": 2,
+      "targets": [
+        {
+          "label": "Original delivery term",
+          "matched_text": "계약 후 50일 이 내",
+          "bbox": {
+            "x": 52.9,
+            "y": 645.4398,
+            "w": 74.907,
+            "h": 7.479
+          }
+        }
+      ],
+      "coordinate_space": "evidence_pdf_page_space",
+      "jump_mode": "BBOX_EXACT",
+      "binding_origin": "public_exact_text_binder",
+      "binding_status": "VERIFIED",
+      "exact_bbox_truth": true,
+      "public_source_type": "sanitized_public_source",
+      "synthetic": false
+    },
+    {
+      "schema_version": "ratin.public_evidence_binding.v1",
+      "public_evidence_id": "EV-033",
+      "display_document_name": "Item and Cost Worksheet (XLSX Evidence Rendering)",
+      "relative_evidence_pdf_path": "evidence/03_item_cost_worksheet_rendering.pdf",
+      "source_document_sha256": "91aa24b46493e33f711e418efc1c54ec8b886f410928f26edf2a8d17a6bf6b60",
+      "evidence_pdf_sha256": "91aa24b46493e33f711e418efc1c54ec8b886f410928f26edf2a8d17a6bf6b60",
+      "page": 1,
+      "page_count": 1,
+      "targets": [
+        {
+          "label": "Document-linked total",
+          "matched_text": "84,915,344",
+          "bbox": {
+            "x": 52.369,
+            "y": 644.6208,
+            "w": 44.235,
+            "h": 7.74
+          }
+        }
+      ],
+      "coordinate_space": "evidence_pdf_page_space",
+      "jump_mode": "BBOX_EXACT",
+      "binding_origin": "public_exact_text_binder",
+      "binding_status": "VERIFIED",
+      "exact_bbox_truth": true,
+      "public_source_type": "controlled_synthetic_exhibit",
+      "synthetic": true
+    },
+    {
+      "schema_version": "ratin.public_evidence_binding.v1",
+      "public_evidence_id": "EV-056",
+      "display_document_name": "Item and Cost Worksheet (XLSX Evidence Rendering)",
+      "relative_evidence_pdf_path": "evidence/03_item_cost_worksheet_rendering.pdf",
+      "source_document_sha256": "91aa24b46493e33f711e418efc1c54ec8b886f410928f26edf2a8d17a6bf6b60",
+      "evidence_pdf_sha256": "91aa24b46493e33f711e418efc1c54ec8b886f410928f26edf2a8d17a6bf6b60",
+      "page": 1,
+      "page_count": 1,
+      "targets": [
+        {
+          "label": "Packing Sleeve quantity",
+          "matched_text": "2007132 CWP Packing Sleeve Ø174xØ190x250L, A743 CF3MN EA 4",
+          "bbox": {
+            "x": 52.54,
+            "y": 575.6298,
+            "w": 312.165,
+            "h": 8.001
+          }
+        },
+        {
+          "label": "Bearing Sleeve quantity",
+          "matched_text": "2007131 CWP Bearing Sleeve Ø174xØ190x380L, A743 CF3MN EA 12",
+          "bbox": {
+            "x": 52.54,
+            "y": 552.6298,
+            "w": 317.097,
+            "h": 8.001
+          }
+        },
+        {
+          "label": "CWP Bearing quantity",
+          "matched_text": "2171748 CWP Bearing Ø240xØ190x320L, LUNA 15GR EA 12",
+          "bbox": {
+            "x": 52.54,
+            "y": 529.6298,
+            "w": 278.874,
+            "h": 8.001
+          }
+        },
+        {
+          "label": "SLP Packing Sleeve quantity",
+          "matched_text": "2108856 SLP Packing Sleeve Ø240xØ260x230L, A743 CF3MN EA 2",
+          "bbox": {
+            "x": 52.54,
+            "y": 506.6298,
+            "w": 308.457,
+            "h": 8.001
+          }
+        },
+        {
+          "label": "SLP Bearing Sleeve quantity",
+          "matched_text": "2108857 SLP Bearing Sleeve Ø240xØ260x540L, A743 CF3MN EA 6",
+          "bbox": {
+            "x": 52.54,
+            "y": 483.6298,
+            "w": 308.079,
+            "h": 8.001
+          }
+        },
+        {
+          "label": "SLP Bearing quantity",
+          "matched_text": "2165426 SLP Bearing Ø330xØ260x480L, LUNA 15GR EA 6",
+          "bbox": {
+            "x": 52.54,
+            "y": 460.6298,
+            "w": 269.856,
+            "h": 8.001
+          }
+        }
+      ],
+      "coordinate_space": "evidence_pdf_page_space",
+      "jump_mode": "BBOX_EXACT_MULTI",
+      "binding_origin": "public_exact_text_binder",
+      "binding_status": "VERIFIED",
+      "exact_bbox_truth": true,
+      "public_source_type": "controlled_synthetic_exhibit",
+      "synthetic": true
+    },
+    {
+      "schema_version": "ratin.public_evidence_binding.v1",
+      "public_evidence_id": "EV-057",
+      "display_document_name": "Special Conditions - Controlled Synthetic Exhibit",
+      "relative_evidence_pdf_path": "evidence/05_special_conditions_synthetic.pdf",
+      "source_document_sha256": "b87e076dbbe1a3f5c5ea56f9336c4fe7b07a2aaf3413b11fd526c0bb898dbcf1",
+      "evidence_pdf_sha256": "b87e076dbbe1a3f5c5ea56f9336c4fe7b07a2aaf3413b11fd526c0bb898dbcf1",
+      "page": 1,
+      "page_count": 1,
+      "targets": [
+        {
+          "label": "Inspection unit",
+          "matched_text": "납품 검수 시 수량 단위는 총 42식으로 확인한다.",
+          "bbox": {
+            "x": 53.224,
+            "y": 507.4308,
+            "w": 194.985,
+            "h": 7.488
+          }
+        }
+      ],
+      "coordinate_space": "evidence_pdf_page_space",
+      "jump_mode": "BBOX_EXACT",
+      "binding_origin": "public_exact_text_binder",
+      "binding_status": "VERIFIED",
+      "exact_bbox_truth": true,
+      "public_source_type": "controlled_synthetic_exhibit",
+      "synthetic": true
+    },
+    {
+      "schema_version": "ratin.public_evidence_binding.v1",
+      "public_evidence_id": "EV-060",
+      "display_document_name": "Public Notice Detail - Sanitized",
+      "relative_evidence_pdf_path": "evidence/01_public_notice_detail_sanitized.pdf",
+      "source_document_sha256": "c4b827c6616ddf5f6e304724b20a9e8a8fc98b442ba7b47fb8f3c0ed6eb23902",
+      "evidence_pdf_sha256": "c4b827c6616ddf5f6e304724b20a9e8a8fc98b442ba7b47fb8f3c0ed6eb23902",
+      "page": 1,
+      "page_count": 2,
+      "targets": [
+        {
+          "label": "Bid application deadline",
+          "matched_text": "입찰참가신청 마감일시 : 2026/01/07 15:00",
+          "bbox": {
+            "x": 53.116,
+            "y": 576.1158,
+            "w": 180.108,
+            "h": 8.109
+          }
+        }
+      ],
+      "coordinate_space": "evidence_pdf_page_space",
+      "jump_mode": "BBOX_EXACT",
+      "binding_origin": "public_exact_text_binder",
+      "binding_status": "VERIFIED",
+      "exact_bbox_truth": true,
+      "public_source_type": "sanitized_public_source",
+      "synthetic": false
+    },
+    {
+      "schema_version": "ratin.public_evidence_binding.v1",
+      "public_evidence_id": "EV-061",
+      "display_document_name": "Public Notice Detail - Sanitized",
+      "relative_evidence_pdf_path": "evidence/01_public_notice_detail_sanitized.pdf",
+      "source_document_sha256": "c4b827c6616ddf5f6e304724b20a9e8a8fc98b442ba7b47fb8f3c0ed6eb23902",
+      "evidence_pdf_sha256": "c4b827c6616ddf5f6e304724b20a9e8a8fc98b442ba7b47fb8f3c0ed6eb23902",
+      "page": 1,
+      "page_count": 2,
+      "targets": [
+        {
+          "label": "Small-business confirmation",
+          "matched_text": "소상공인 확인서를 보유한 자",
+          "bbox": {
+            "x": 52.819,
+            "y": 507.4308,
+            "w": 115.434,
+            "h": 7.479
+          }
+        }
+      ],
+      "coordinate_space": "evidence_pdf_page_space",
+      "jump_mode": "BBOX_EXACT",
+      "binding_origin": "public_exact_text_binder",
+      "binding_status": "VERIFIED",
+      "exact_bbox_truth": true,
+      "public_source_type": "sanitized_public_source",
+      "synthetic": false
+    },
+    {
+      "schema_version": "ratin.public_evidence_binding.v1",
+      "public_evidence_id": "EV-062",
+      "display_document_name": "Public Notice Detail - Sanitized",
+      "relative_evidence_pdf_path": "evidence/01_public_notice_detail_sanitized.pdf",
+      "source_document_sha256": "c4b827c6616ddf5f6e304724b20a9e8a8fc98b442ba7b47fb8f3c0ed6eb23902",
+      "evidence_pdf_sha256": "c4b827c6616ddf5f6e304724b20a9e8a8fc98b442ba7b47fb8f3c0ed6eb23902",
+      "page": 1,
+      "page_count": 2,
+      "targets": [
+        {
+          "label": "Qualified equipment registration",
+          "matched_text": "기자재 유자격 등록업체(품목명 : 해수취수펌프, 품목번호 : 5101009)",
+          "bbox": {
+            "x": 52.909,
+            "y": 437.9268,
+            "w": 281.997,
+            "h": 8.433
+          }
+        }
+      ],
+      "coordinate_space": "evidence_pdf_page_space",
+      "jump_mode": "BBOX_EXACT",
+      "binding_origin": "public_exact_text_binder",
+      "binding_status": "VERIFIED",
+      "exact_bbox_truth": true,
+      "public_source_type": "sanitized_public_source",
+      "synthetic": false
+    },
+    {
+      "schema_version": "ratin.public_evidence_binding.v1",
+      "public_evidence_id": "EV-063",
+      "display_document_name": "Public Notice Detail - Sanitized",
+      "relative_evidence_pdf_path": "evidence/01_public_notice_detail_sanitized.pdf",
+      "source_document_sha256": "c4b827c6616ddf5f6e304724b20a9e8a8fc98b442ba7b47fb8f3c0ed6eb23902",
+      "evidence_pdf_sha256": "c4b827c6616ddf5f6e304724b20a9e8a8fc98b442ba7b47fb8f3c0ed6eb23902",
+      "page": 1,
+      "page_count": 2,
+      "targets": [
+        {
+          "label": "Bid application documents",
+          "matched_text": "14. 입찰참가신청서류",
+          "bbox": {
+            "x": 53.26,
+            "y": 369.4128,
+            "w": 86.778,
+            "h": 7.497
+          }
+        }
+      ],
+      "coordinate_space": "evidence_pdf_page_space",
+      "jump_mode": "BBOX_EXACT",
+      "binding_origin": "public_exact_text_binder",
+      "binding_status": "VERIFIED",
+      "exact_bbox_truth": true,
+      "public_source_type": "sanitized_public_source",
+      "synthetic": false
+    },
+    {
+      "schema_version": "ratin.public_evidence_binding.v1",
+      "public_evidence_id": "EV-064",
+      "display_document_name": "Public Notice Detail - Sanitized",
+      "relative_evidence_pdf_path": "evidence/01_public_notice_detail_sanitized.pdf",
+      "source_document_sha256": "c4b827c6616ddf5f6e304724b20a9e8a8fc98b442ba7b47fb8f3c0ed6eb23902",
+      "evidence_pdf_sha256": "c4b827c6616ddf5f6e304724b20a9e8a8fc98b442ba7b47fb8f3c0ed6eb23902",
+      "page": 1,
+      "page_count": 2,
+      "targets": [
+        {
+          "label": "Notice reference price",
+          "matched_text": "84,915,344 (원)",
+          "bbox": {
+            "x": 52.468,
+            "y": 299.9268,
+            "w": 68.706,
+            "h": 8.433
+          }
+        }
+      ],
+      "coordinate_space": "evidence_pdf_page_space",
+      "jump_mode": "BBOX_EXACT",
+      "binding_origin": "public_exact_text_binder",
+      "binding_status": "VERIFIED",
+      "exact_bbox_truth": true,
+      "public_source_type": "sanitized_public_source",
+      "synthetic": false
+    },
+    {
+      "schema_version": "ratin.public_evidence_binding.v1",
+      "public_evidence_id": "EV-065",
+      "display_document_name": "Bid Notice (HWP Evidence Rendering) - Sanitized",
+      "relative_evidence_pdf_path": "evidence/02_bid_notice_rendering_sanitized.pdf",
+      "source_document_sha256": "7959a69f2b6fea3cd84f91040656351a70d3c9d7e3aa67b57cff651b6fa3aa6c",
+      "evidence_pdf_sha256": "7959a69f2b6fea3cd84f91040656351a70d3c9d7e3aa67b57cff651b6fa3aa6c",
+      "page": 1,
+      "page_count": 1,
+      "targets": [
+        {
+          "label": "HWP notice document",
+          "matched_text": "물품구매/제조 입찰공고(안)",
+          "bbox": {
+            "x": 52.828,
+            "y": 644.9628,
+            "w": 111.483,
+            "h": 8.397
+          }
+        }
+      ],
+      "coordinate_space": "evidence_pdf_page_space",
+      "jump_mode": "BBOX_EXACT",
+      "binding_origin": "public_exact_text_binder",
+      "binding_status": "VERIFIED",
+      "exact_bbox_truth": true,
+      "public_source_type": "sanitized_public_source",
+      "synthetic": false
+    },
+    {
+      "schema_version": "ratin.public_evidence_binding.v1",
+      "public_evidence_id": "EV-MD-NOTICE-NO",
+      "display_document_name": "Public Notice Detail - Sanitized",
+      "relative_evidence_pdf_path": "evidence/01_public_notice_detail_sanitized.pdf",
+      "source_document_sha256": "c4b827c6616ddf5f6e304724b20a9e8a8fc98b442ba7b47fb8f3c0ed6eb23902",
+      "evidence_pdf_sha256": "c4b827c6616ddf5f6e304724b20a9e8a8fc98b442ba7b47fb8f3c0ed6eb23902",
+      "page": 1,
+      "page_count": 2,
+      "targets": [
+        {
+          "label": "Notice number",
+          "matched_text": "G082500500",
+          "bbox": {
+            "x": 52.477,
+            "y": 231.7908,
+            "w": 51.129,
+            "h": 6.651
+          }
+        }
+      ],
+      "coordinate_space": "evidence_pdf_page_space",
+      "jump_mode": "BBOX_EXACT",
+      "binding_origin": "public_exact_text_binder",
+      "binding_status": "VERIFIED",
+      "exact_bbox_truth": true,
+      "public_source_type": "sanitized_public_source",
+      "synthetic": false
+    },
+    {
+      "schema_version": "ratin.public_evidence_binding.v1",
+      "public_evidence_id": "EV-MD-NOTICE-TITLE",
+      "display_document_name": "Public Notice Detail - Sanitized",
+      "relative_evidence_pdf_path": "evidence/01_public_notice_detail_sanitized.pdf",
+      "source_document_sha256": "c4b827c6616ddf5f6e304724b20a9e8a8fc98b442ba7b47fb8f3c0ed6eb23902",
+      "evidence_pdf_sha256": "c4b827c6616ddf5f6e304724b20a9e8a8fc98b442ba7b47fb8f3c0ed6eb23902",
+      "page": 1,
+      "page_count": 2,
+      "targets": [
+        {
+          "label": "Notice title",
+          "matched_text": "[당진4호기] 계획예방정비공사용 취수설비 정비용자재 구매",
+          "bbox": {
+            "x": 53.692,
+            "y": 161.9808,
+            "w": 239.49,
+            "h": 8.37
+          }
+        }
+      ],
+      "coordinate_space": "evidence_pdf_page_space",
+      "jump_mode": "BBOX_EXACT",
+      "binding_origin": "public_exact_text_binder",
+      "binding_status": "VERIFIED",
+      "exact_bbox_truth": true,
+      "public_source_type": "sanitized_public_source",
+      "synthetic": false
+    },
+    {
+      "schema_version": "ratin.public_evidence_binding.v1",
+      "public_evidence_id": "EV-MD-ISSUER-OFFICE",
+      "display_document_name": "Public Notice Detail - Sanitized",
+      "relative_evidence_pdf_path": "evidence/01_public_notice_detail_sanitized.pdf",
+      "source_document_sha256": "c4b827c6616ddf5f6e304724b20a9e8a8fc98b442ba7b47fb8f3c0ed6eb23902",
+      "evidence_pdf_sha256": "c4b827c6616ddf5f6e304724b20a9e8a8fc98b442ba7b47fb8f3c0ed6eb23902",
+      "page": 1,
+      "page_count": 2,
+      "targets": [
+        {
+          "label": "Issuer office",
+          "matched_text": "한국동서발전(주) 당진발전본부 경영지원처 계약부",
+          "bbox": {
+            "x": 52.927,
+            "y": 92.9628,
+            "w": 205.236,
+            "h": 8.397
+          }
+        }
+      ],
+      "coordinate_space": "evidence_pdf_page_space",
+      "jump_mode": "BBOX_EXACT",
+      "binding_origin": "public_exact_text_binder",
+      "binding_status": "VERIFIED",
+      "exact_bbox_truth": true,
+      "public_source_type": "sanitized_public_source",
+      "synthetic": false
+    },
+    {
+      "schema_version": "ratin.public_evidence_binding.v1",
+      "public_evidence_id": "EV-MD-CONTRACT-METHOD",
+      "display_document_name": "Public Notice Detail - Sanitized",
+      "relative_evidence_pdf_path": "evidence/01_public_notice_detail_sanitized.pdf",
+      "source_document_sha256": "c4b827c6616ddf5f6e304724b20a9e8a8fc98b442ba7b47fb8f3c0ed6eb23902",
+      "evidence_pdf_sha256": "c4b827c6616ddf5f6e304724b20a9e8a8fc98b442ba7b47fb8f3c0ed6eb23902",
+      "page": 2,
+      "page_count": 2,
+      "targets": [
+        {
+          "label": "Contract method",
+          "matched_text": "낙찰자결정방법 : 적격심사(중소기업)",
+          "bbox": {
+            "x": 53.224,
+            "y": 644.9628,
+            "w": 149.706,
+            "h": 8.397
+          }
+        }
+      ],
+      "coordinate_space": "evidence_pdf_page_space",
+      "jump_mode": "BBOX_EXACT",
+      "binding_origin": "public_exact_text_binder",
+      "binding_status": "VERIFIED",
+      "exact_bbox_truth": true,
+      "public_source_type": "sanitized_public_source",
+      "synthetic": false
+    },
+    {
+      "schema_version": "ratin.public_evidence_binding.v1",
+      "public_evidence_id": "EV-MD-NOTICE-DATE",
+      "display_document_name": "Public Notice Detail - Sanitized",
+      "relative_evidence_pdf_path": "evidence/01_public_notice_detail_sanitized.pdf",
+      "source_document_sha256": "c4b827c6616ddf5f6e304724b20a9e8a8fc98b442ba7b47fb8f3c0ed6eb23902",
+      "evidence_pdf_sha256": "c4b827c6616ddf5f6e304724b20a9e8a8fc98b442ba7b47fb8f3c0ed6eb23902",
+      "page": 2,
+      "page_count": 2,
+      "targets": [
+        {
+          "label": "Notice date",
+          "matched_text": "2025년 12월 30일",
+          "bbox": {
+            "x": 52.54,
+            "y": 576.5478,
+            "w": 76.014,
+            "h": 7.362
+          }
+        }
+      ],
+      "coordinate_space": "evidence_pdf_page_space",
+      "jump_mode": "BBOX_EXACT",
+      "binding_origin": "public_exact_text_binder",
+      "binding_status": "VERIFIED",
+      "exact_bbox_truth": true,
+      "public_source_type": "sanitized_public_source",
+      "synthetic": false
+    },
+    {
+      "schema_version": "ratin.public_evidence_binding.v1",
+      "public_evidence_id": "EV-MD-BID-PERIOD",
+      "display_document_name": "Public Notice Detail - Sanitized",
+      "relative_evidence_pdf_path": "evidence/01_public_notice_detail_sanitized.pdf",
+      "source_document_sha256": "c4b827c6616ddf5f6e304724b20a9e8a8fc98b442ba7b47fb8f3c0ed6eb23902",
+      "evidence_pdf_sha256": "c4b827c6616ddf5f6e304724b20a9e8a8fc98b442ba7b47fb8f3c0ed6eb23902",
+      "page": 2,
+      "page_count": 2,
+      "targets": [
+        {
+          "label": "Bid submission period",
+          "matched_text": "2026/01/07 15:00 ~2026/01/08 15:00",
+          "bbox": {
+            "x": 52.261,
+            "y": 507.7908,
+            "w": 147.177,
+            "h": 6.651
+          }
+        }
+      ],
+      "coordinate_space": "evidence_pdf_page_space",
+      "jump_mode": "BBOX_EXACT",
+      "binding_origin": "public_exact_text_binder",
+      "binding_status": "VERIFIED",
+      "exact_bbox_truth": true,
+      "public_source_type": "sanitized_public_source",
+      "synthetic": false
+    },
+    {
+      "schema_version": "ratin.public_evidence_binding.v1",
+      "public_evidence_id": "EV-MD-OPEN-DATE",
+      "display_document_name": "Public Notice Detail - Sanitized",
+      "relative_evidence_pdf_path": "evidence/01_public_notice_detail_sanitized.pdf",
+      "source_document_sha256": "c4b827c6616ddf5f6e304724b20a9e8a8fc98b442ba7b47fb8f3c0ed6eb23902",
+      "evidence_pdf_sha256": "c4b827c6616ddf5f6e304724b20a9e8a8fc98b442ba7b47fb8f3c0ed6eb23902",
+      "page": 2,
+      "page_count": 2,
+      "targets": [
+        {
+          "label": "Bid opening",
+          "matched_text": "개찰일시 : 2026.01.08 16시 00분",
+          "bbox": {
+            "x": 52.9,
+            "y": 438.4488,
+            "w": 139.995,
+            "h": 7.461
+          }
+        }
+      ],
+      "coordinate_space": "evidence_pdf_page_space",
+      "jump_mode": "BBOX_EXACT",
+      "binding_origin": "public_exact_text_binder",
+      "binding_status": "VERIFIED",
+      "exact_bbox_truth": true,
+      "public_source_type": "sanitized_public_source",
+      "synthetic": false
+    },
+    {
+      "schema_version": "ratin.public_evidence_binding.v1",
+      "public_evidence_id": "EV-MD-BASE-AMOUNT",
+      "display_document_name": "Public Notice Detail - Sanitized",
+      "relative_evidence_pdf_path": "evidence/01_public_notice_detail_sanitized.pdf",
+      "source_document_sha256": "c4b827c6616ddf5f6e304724b20a9e8a8fc98b442ba7b47fb8f3c0ed6eb23902",
+      "evidence_pdf_sha256": "c4b827c6616ddf5f6e304724b20a9e8a8fc98b442ba7b47fb8f3c0ed6eb23902",
+      "page": 2,
+      "page_count": 2,
+      "targets": [
+        {
+          "label": "Preliminary base amount",
+          "matched_text": "93,406,878 (원)",
+          "bbox": {
+            "x": 52.549,
+            "y": 368.9268,
+            "w": 68.625,
+            "h": 8.433
+          }
+        }
+      ],
+      "coordinate_space": "evidence_pdf_page_space",
+      "jump_mode": "BBOX_EXACT",
+      "binding_origin": "public_exact_text_binder",
+      "binding_status": "VERIFIED",
+      "exact_bbox_truth": true,
+      "public_source_type": "sanitized_public_source",
+      "synthetic": false
+    }
+  ]
+}

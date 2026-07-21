@@ -1,0 +1,4 @@
+Status: PASS
+Scanned files: 9
+Hardcoded physical anchors: 0
+Findings: 0

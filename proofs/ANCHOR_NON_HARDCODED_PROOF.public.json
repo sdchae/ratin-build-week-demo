@@ -1,0 +1,12 @@
+{
+  "schema_version": "ratin.anchor_non_hardcoded_proof.public.v1",
+  "status": "PASS",
+  "runtime_bound_exact_evidence_links": 21,
+  "total_evidence_links": 21,
+  "hardcoded_physical_anchors": 0,
+  "hardcoded_physical_anchor_count": 0,
+  "fallback_jumps": 0,
+  "unverified_evidence_used": 0,
+  "immutable_reference_modified": false,
+  "binding_source": "demo_data/evidence_binding_manifest.public.json"
+}

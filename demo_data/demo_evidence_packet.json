@@ -1,0 +1,631 @@
+{
+  "schema": "ratin.build_week_public_packet.v1",
+  "case_id": "BUILD_WEEK_G082500500_ATTACHMENT_V2",
+  "title": "[당진4호기] 계획예방정비공사용 취수설비 정비용자재 구매",
+  "subtitle": "Modified actual-attachment demonstration package · not an actual bid",
+  "status": "PUBLIC_SANITIZED_FROZEN_EVIDENCE",
+  "overview": {
+    "document_count": 5,
+    "format_counts": {
+      "pdf": 3,
+      "hwp": 1,
+      "xlsx": 1
+    },
+    "ocr_used": false,
+    "bbox_jump_count": 21,
+    "page_fallback_count": 0,
+    "document_fallback_count": 0,
+    "document_table_fallback_count": 0
+  },
+  "bid_metadata": {
+    "source": {
+      "provider": "KEPCO Open API",
+      "endpoint": "https://bigdata.kepco.co.kr/openapi/v1/electContract.do",
+      "retrieved_at": "2026-06-04T14:01:53+09:00",
+      "source_ref": ".tmp\\kepco_notice_metadata_backfill_20260604\\raw_api_responses\\COM08_20251201_20251231_200.json",
+      "raw_snapshot_digest": "7785f0c0369e287b77baae859b85365111a99f68101b018d58d908276dc2d0b1",
+      "document_derived": false
+    },
+    "rows": [
+      {
+        "field_id": "notice_no",
+        "label": "Notice Number",
+        "value": "G082500500",
+        "evidence_id": "EV-MD-NOTICE-NO",
+        "source_kind": "DOCUMENT EVIDENCE"
+      },
+      {
+        "field_id": "title",
+        "label": "Notice Title",
+        "value": "[당진4호기] 계획예방정비공사용 취수설비 정비용자재 구매",
+        "evidence_id": "EV-MD-NOTICE-TITLE",
+        "source_kind": "DOCUMENT EVIDENCE"
+      },
+      {
+        "field_id": "org_name",
+        "label": "Issuer / Office",
+        "value": "한국동서발전(주) 당진발전본부 경영지원처 계약부",
+        "evidence_id": "EV-MD-ISSUER-OFFICE",
+        "source_kind": "DOCUMENT EVIDENCE"
+      },
+      {
+        "field_id": "company_id",
+        "label": "Company Code",
+        "value": "COM08",
+        "evidence_id": null,
+        "source_kind": "API METADATA"
+      },
+      {
+        "field_id": "purchase_type_display",
+        "label": "Procurement Type",
+        "value": "Product",
+        "evidence_id": null,
+        "source_kind": "API METADATA"
+      },
+      {
+        "field_id": "contract_type",
+        "label": "Contract Method",
+        "value": "적격심사(중소기업)",
+        "display_value": "Qualification Review — Small Business",
+        "evidence_id": "EV-MD-CONTRACT-METHOD",
+        "source_kind": "DOCUMENT EVIDENCE"
+      },
+      {
+        "field_id": "notice_date",
+        "label": "Notice Date",
+        "value": "2025-12-30",
+        "evidence_id": "EV-MD-NOTICE-DATE",
+        "source_kind": "DOCUMENT EVIDENCE"
+      },
+      {
+        "field_id": "date_start",
+        "label": "Bid Start",
+        "value": "2026-01-07 15:00",
+        "evidence_id": "EV-MD-BID-PERIOD",
+        "source_kind": "DOCUMENT EVIDENCE"
+      },
+      {
+        "field_id": "date_end",
+        "label": "Bid Deadline",
+        "value": "2026-01-08 15:00",
+        "evidence_id": "EV-MD-BID-PERIOD",
+        "source_kind": "DOCUMENT EVIDENCE"
+      },
+      {
+        "field_id": "date_open",
+        "label": "Bid Opening",
+        "value": "2026.01.08 16시 00분",
+        "evidence_id": "EV-MD-OPEN-DATE",
+        "source_kind": "DOCUMENT EVIDENCE"
+      },
+      {
+        "field_id": "price_est_display",
+        "label": "Estimated Price",
+        "value": "₩84,915,344",
+        "evidence_id": "EV-064",
+        "source_kind": "DOCUMENT EVIDENCE"
+      },
+      {
+        "field_id": "price_base_display",
+        "label": "Preliminary Base Amount",
+        "value": "₩93,406,878",
+        "evidence_id": "EV-MD-BASE-AMOUNT",
+        "source_kind": "DOCUMENT EVIDENCE"
+      },
+      {
+        "field_id": "price_budget_display",
+        "label": "Budget Amount",
+        "value": "Not provided",
+        "evidence_id": null,
+        "source_kind": "API METADATA"
+      }
+    ]
+  },
+  "bid_entry_requirements": [
+    {
+      "label": "Bid application deadline",
+      "value": "2026-01-07 15:00",
+      "evidence_id": "EV-060"
+    }
+  ],
+  "bid_entry_requirement_sources": [
+    {
+      "evidence_id": "EV-060",
+      "label": "Bid application deadline",
+      "document_name": "00_상세조회.pdf",
+      "page": 1,
+      "text": "입찰참가신청 마감일시 : 2026/01/07 15:00"
+    },
+    {
+      "evidence_id": "EV-061",
+      "label": "Small-business confirmation",
+      "document_name": "00_상세조회.pdf",
+      "page": 1,
+      "text": "소상공인 확인서를 보유한 자"
+    },
+    {
+      "evidence_id": "EV-062",
+      "label": "Qualified equipment registration",
+      "document_name": "00_상세조회.pdf",
+      "page": 1,
+      "text": "기자재 유자격 등록업체(품목명 : 해수취수펌프, 품목번호 : 5101009)"
+    },
+    {
+      "evidence_id": "EV-063",
+      "label": "Bid application documents",
+      "document_name": "00_상세조회.pdf",
+      "page": 2,
+      "text": "14. 입찰참가신청서류"
+    }
+  ],
+  "document_linked_reference_cost": {
+    "value": "84915344",
+    "currency": "KRW",
+    "source_evidence_id": "EV-033"
+  },
+  "market_reference": {
+    "selected_record": {
+      "work_code": "열수축관",
+      "name": "열수축슬리브, 심선 12.7-5",
+      "specification": "기타가격 · 부가가치세별도 · comparable part-family candidate",
+      "unit": "개",
+      "material_cost": "14088",
+      "labor_cost": "0",
+      "expense": "0",
+      "total": "14088"
+    },
+    "total_record_count": 18,
+    "applied_sample_count": 1,
+    "provenance_index": 1,
+    "document_evidence_id": null,
+    "match_status": "PUBLIC API only · No exact document item match in the attachment package"
+  },
+  "standard_market_reference": {
+    "selected_record": {
+      "work_code": "COA020520000",
+      "name": "배송관부설및철거(침설관)",
+      "specification": "D760㎜×6m(고무슬리브접합)(크레인(트럭)15톤)",
+      "unit": "SET",
+      "material_cost": "6904",
+      "labor_cost": "107402",
+      "expense": "34864",
+      "total": "149170"
+    },
+    "total_record_count": 6263,
+    "applied_sample_count": 1,
+    "provenance_index": 0
+  },
+  "cost_coverage_warning": {
+    "severity": "HIGH",
+    "document_only_buffer": "0.00",
+    "document_cost_coverage_percent": "100.00",
+    "public_material_reference": "6904",
+    "public_labor_reference": "107402",
+    "public_expense_reference": "34864",
+    "labor_stress_total": "85022746.00",
+    "labor_stress_shortfall": "107402.00",
+    "labor_stress_coverage_percent": "100.13",
+    "interpretation": "Document-linked cost exhausts the notice reference price before unresolved staffing is priced.",
+    "caveat": "The public-market row is a dated adjacent-work proxy, not final cost truth."
+  },
+  "gpt_findings_fixture": {
+    "bid_entry_requirements": [
+      {
+        "requirement_id": "qualification_registration",
+        "category": "Qualification Restriction",
+        "title": "G2B registration, SRM membership, certificate, and timely bid application",
+        "status": "Requirement Confirmed",
+        "required_or_conditional": "Required",
+        "and_or_relation": "AND",
+        "valid_at_bid_deadline": "Unclear",
+        "joint_venture_supplement_allowed": "Unclear",
+        "timing": "Bid application must be completed by 2026/01/07 15:00.",
+        "evidence_ids": [
+          "EV-060"
+        ]
+      },
+      {
+        "requirement_id": "qualification_small_business",
+        "category": "Qualification Restriction",
+        "title": "Small enterprise or small-business owner with confirmation certificate",
+        "status": "Requirement Confirmed",
+        "required_or_conditional": "Required",
+        "and_or_relation": "AND",
+        "valid_at_bid_deadline": "Unclear",
+        "joint_venture_supplement_allowed": "Unclear",
+        "timing": "Certificate possession is required; the controlling validity date is not stated.",
+        "evidence_ids": [
+          "EV-061"
+        ]
+      },
+      {
+        "requirement_id": "registration_equipment_alternative",
+        "category": "License or Registration",
+        "title": "Qualified maintenance or equipment supplier registration",
+        "status": "Requirement Confirmed",
+        "required_or_conditional": "Required",
+        "and_or_relation": "OR",
+        "valid_at_bid_deadline": "Unclear",
+        "joint_venture_supplement_allowed": "Unclear",
+        "timing": "At least one listed qualification must be satisfied.",
+        "evidence_ids": [
+          "EV-062"
+        ]
+      },
+      {
+        "requirement_id": "document_bid_application",
+        "category": "Required Document",
+        "title": "Online bid participation application form",
+        "status": "Requirement Confirmed",
+        "required_or_conditional": "Required",
+        "and_or_relation": "AND",
+        "valid_at_bid_deadline": "Not Applicable",
+        "joint_venture_supplement_allowed": "Not Applicable",
+        "timing": "Submit online by 2026/01/07 15:00.",
+        "evidence_ids": [
+          "EV-060",
+          "EV-063"
+        ]
+      },
+      {
+        "requirement_id": "document_bid_bond",
+        "category": "Required Document",
+        "title": "Bid security waiver payment pledge or prescribed bid security",
+        "status": "Requirement Confirmed",
+        "required_or_conditional": "Required",
+        "and_or_relation": "AND",
+        "valid_at_bid_deadline": "Not Applicable",
+        "joint_venture_supplement_allowed": "Not Applicable",
+        "timing": "Submit with the online bid participation application.",
+        "evidence_ids": [
+          "EV-063"
+        ]
+      },
+      {
+        "requirement_id": "document_qualification_proof",
+        "category": "Required Document",
+        "title": "Supporting documents for stated bid qualifications",
+        "status": "Requirement Confirmed",
+        "required_or_conditional": "Required",
+        "and_or_relation": "AND",
+        "valid_at_bid_deadline": "Not Applicable",
+        "joint_venture_supplement_allowed": "Unclear",
+        "timing": "Submit qualification evidence with the online application.",
+        "evidence_ids": [
+          "EV-061",
+          "EV-062",
+          "EV-063"
+        ]
+      },
+      {
+        "requirement_id": "document_manufacturer_support",
+        "category": "Required Document",
+        "title": "Manufacturer technical support letter",
+        "status": "Not Found in Package",
+        "required_or_conditional": "Not Established",
+        "and_or_relation": "N/A",
+        "valid_at_bid_deadline": "Unclear",
+        "joint_venture_supplement_allowed": "Unclear",
+        "timing": "The package does not establish this requirement; issuer confirmation is required.",
+        "evidence_ids": []
+      }
+    ],
+    "conflict_judgment": "Three conflicting requirements were identified across the package. Select either side to inspect its exact source.",
+    "risk_interpretation": "The stricter 2-hour response condition may require additional standby staffing. The 49-day delivery term and quantity-unit discrepancy require reconciliation.",
+    "required_actions": [
+      "Confirm possession and validity timing for every required registration, certificate, and qualification before 2026-01-07 15:00.",
+      "Prepare the online application, bid-security document, and qualification evidence for submission by 2026-01-07 15:00.",
+      "Price and plan conservatively for the 2-hour response and 49-day delivery terms until clarified.",
+      "Resolve the 42 EA / 42식 quantity-unit discrepancy before pricing and submission."
+    ],
+    "clarification_question_to_issuer": "Which emergency site-response condition has priority: arrival within 4 hours or within 2 hours?",
+    "english_decision_brief": "Manual review is required before pricing because response time, unit basis, and unresolved staffing scope may change cost coverage.",
+    "evidence_ids": [
+      "EV-012",
+      "EV-048",
+      "EV-021",
+      "EV-024",
+      "EV-033",
+      "EV-056",
+      "EV-057",
+      "EV-060",
+      "EV-061",
+      "EV-062",
+      "EV-063",
+      "EV-064",
+      "EV-065"
+    ]
+  },
+  "required_actions": [
+    "Confirm possession and validity timing for every required registration, certificate, and qualification before 2026-01-07 15:00.",
+    "Prepare the online application, bid-security document, and qualification evidence for submission by 2026-01-07 15:00.",
+    "Price and plan conservatively for the 2-hour response and 49-day delivery terms until clarified.",
+    "Resolve the 42 EA / 42식 quantity-unit discrepancy before pricing and submission."
+  ],
+  "conflict_comparison": {
+    "title": "Emergency response condition A/B",
+    "side_a_evidence_id": "EV-012",
+    "side_b_evidence_id": "EV-048",
+    "priority_status": "UNSPECIFIED"
+  },
+  "issue_comparisons": [
+    {
+      "title": "Emergency response time",
+      "side_a_evidence_id": "EV-012",
+      "side_a_label": "Contract condition",
+      "side_a_value": "4 hours",
+      "side_b_evidence_id": "EV-048",
+      "side_b_label": "Special condition",
+      "side_b_value": "2 hours"
+    },
+    {
+      "title": "Delivery term",
+      "side_a_evidence_id": "EV-024",
+      "side_a_label": "Original notice",
+      "side_a_value": "50 days",
+      "side_b_evidence_id": "EV-021",
+      "side_b_label": "Modified condition",
+      "side_b_value": "49 days"
+    },
+    {
+      "title": "Quantity unit",
+      "side_a_evidence_id": "EV-056",
+      "side_a_label": "Workbook total",
+      "side_a_value": "42 EA",
+      "side_b_evidence_id": "EV-057",
+      "side_b_label": "Inspection condition",
+      "side_b_value": "42식 (sets)"
+    }
+  ],
+  "gpt_contract": {
+    "allowed_evidence_ids": [
+      "EV-012",
+      "EV-048",
+      "EV-021",
+      "EV-024",
+      "EV-033",
+      "EV-056",
+      "EV-057",
+      "EV-060",
+      "EV-061",
+      "EV-062",
+      "EV-063",
+      "EV-064",
+      "EV-065"
+    ],
+    "allowed_numbers": [
+      "+09",
+      "0,",
+      "0.00",
+      "00",
+      "01",
+      "012",
+      "021",
+      "024",
+      "033",
+      "04",
+      "048",
+      "056",
+      "057",
+      "06",
+      "060",
+      "061",
+      "062",
+      "063",
+      "064",
+      "065",
+      "07",
+      "08",
+      "09",
+      "1",
+      "1,",
+      "1.5",
+      "10",
+      "100.00",
+      "100.13",
+      "10507",
+      "10514",
+      "10714",
+      "107402",
+      "107402.00",
+      "11",
+      "12",
+      "12.7",
+      "120",
+      "1230000",
+      "13",
+      "13816",
+      "13825",
+      "14",
+      "14088",
+      "1481",
+      "149170",
+      "15",
+      "15151298",
+      "16",
+      "17",
+      "171",
+      "18,",
+      "185",
+      "19",
+      "2",
+      "2.5",
+      "20",
+      "2007131",
+      "2007132",
+      "2024",
+      "2025",
+      "2026",
+      "2026.01",
+      "21",
+      "2108856",
+      "2108857",
+      "2165426",
+      "2171748",
+      "23",
+      "24",
+      "25",
+      "26",
+      "28",
+      "29",
+      "3.4",
+      "30",
+      "33",
+      "34",
+      "34864",
+      "35",
+      "39",
+      "4",
+      "42",
+      "49",
+      "5",
+      "50",
+      "5101009",
+      "544",
+      "55",
+      "6",
+      "6263,",
+      "6904",
+      "84,915,344",
+      "84915344",
+      "85022746.00",
+      "9.5",
+      "91",
+      "93,406,878",
+      "95"
+    ],
+    "fixture_response": {
+      "bid_entry_requirements": [
+        {
+          "requirement_id": "qualification_registration",
+          "category": "Qualification Restriction",
+          "title": "G2B registration, SRM membership, certificate, and timely bid application",
+          "status": "Requirement Confirmed",
+          "required_or_conditional": "Required",
+          "and_or_relation": "AND",
+          "valid_at_bid_deadline": "Unclear",
+          "joint_venture_supplement_allowed": "Unclear",
+          "timing": "Bid application must be completed by 2026/01/07 15:00.",
+          "evidence_ids": [
+            "EV-060"
+          ]
+        },
+        {
+          "requirement_id": "qualification_small_business",
+          "category": "Qualification Restriction",
+          "title": "Small enterprise or small-business owner with confirmation certificate",
+          "status": "Requirement Confirmed",
+          "required_or_conditional": "Required",
+          "and_or_relation": "AND",
+          "valid_at_bid_deadline": "Unclear",
+          "joint_venture_supplement_allowed": "Unclear",
+          "timing": "Certificate possession is required; the controlling validity date is not stated.",
+          "evidence_ids": [
+            "EV-061"
+          ]
+        },
+        {
+          "requirement_id": "registration_equipment_alternative",
+          "category": "License or Registration",
+          "title": "Qualified maintenance or equipment supplier registration",
+          "status": "Requirement Confirmed",
+          "required_or_conditional": "Required",
+          "and_or_relation": "OR",
+          "valid_at_bid_deadline": "Unclear",
+          "joint_venture_supplement_allowed": "Unclear",
+          "timing": "At least one listed qualification must be satisfied.",
+          "evidence_ids": [
+            "EV-062"
+          ]
+        },
+        {
+          "requirement_id": "document_bid_application",
+          "category": "Required Document",
+          "title": "Online bid participation application form",
+          "status": "Requirement Confirmed",
+          "required_or_conditional": "Required",
+          "and_or_relation": "AND",
+          "valid_at_bid_deadline": "Not Applicable",
+          "joint_venture_supplement_allowed": "Not Applicable",
+          "timing": "Submit online by 2026/01/07 15:00.",
+          "evidence_ids": [
+            "EV-060",
+            "EV-063"
+          ]
+        },
+        {
+          "requirement_id": "document_bid_bond",
+          "category": "Required Document",
+          "title": "Bid security waiver payment pledge or prescribed bid security",
+          "status": "Requirement Confirmed",
+          "required_or_conditional": "Required",
+          "and_or_relation": "AND",
+          "valid_at_bid_deadline": "Not Applicable",
+          "joint_venture_supplement_allowed": "Not Applicable",
+          "timing": "Submit with the online bid participation application.",
+          "evidence_ids": [
+            "EV-063"
+          ]
+        },
+        {
+          "requirement_id": "document_qualification_proof",
+          "category": "Required Document",
+          "title": "Supporting documents for stated bid qualifications",
+          "status": "Requirement Confirmed",
+          "required_or_conditional": "Required",
+          "and_or_relation": "AND",
+          "valid_at_bid_deadline": "Not Applicable",
+          "joint_venture_supplement_allowed": "Unclear",
+          "timing": "Submit qualification evidence with the online application.",
+          "evidence_ids": [
+            "EV-061",
+            "EV-062",
+            "EV-063"
+          ]
+        },
+        {
+          "requirement_id": "document_manufacturer_support",
+          "category": "Required Document",
+          "title": "Manufacturer technical support letter",
+          "status": "Not Found in Package",
+          "required_or_conditional": "Not Established",
+          "and_or_relation": "N/A",
+          "valid_at_bid_deadline": "Unclear",
+          "joint_venture_supplement_allowed": "Unclear",
+          "timing": "The package does not establish this requirement; issuer confirmation is required.",
+          "evidence_ids": []
+        }
+      ],
+      "conflict_judgment": "Three conflicting requirements were identified across the package. Select either side to inspect its exact source.",
+      "risk_interpretation": "The stricter 2-hour response condition may require additional standby staffing. The 49-day delivery term and quantity-unit discrepancy require reconciliation.",
+      "required_actions": [
+        "Confirm possession and validity timing for every required registration, certificate, and qualification before 2026-01-07 15:00.",
+        "Prepare the online application, bid-security document, and qualification evidence for submission by 2026-01-07 15:00.",
+        "Price and plan conservatively for the 2-hour response and 49-day delivery terms until clarified.",
+        "Resolve the 42 EA / 42식 quantity-unit discrepancy before pricing and submission."
+      ],
+      "clarification_question_to_issuer": "Which emergency site-response condition has priority: arrival within 4 hours or within 2 hours?",
+      "english_decision_brief": "Manual review is required before pricing because response time, unit basis, and unresolved staffing scope may change cost coverage.",
+      "evidence_ids": [
+        "EV-012",
+        "EV-048",
+        "EV-021",
+        "EV-024",
+        "EV-033",
+        "EV-056",
+        "EV-057",
+        "EV-060",
+        "EV-061",
+        "EV-062",
+        "EV-063",
+        "EV-064",
+        "EV-065"
+      ]
+    }
+  },
+  "public_export": {
+    "proprietary_engine_included": false,
+    "frozen_evidence_artifacts": true,
+    "sanitized_for_public_evaluation": true
+  }
+}
