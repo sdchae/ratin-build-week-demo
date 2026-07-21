@@ -41,6 +41,9 @@ All values below are read from the frozen public packet and manifests.
 - Cached mode that requires no API key
 - Simultaneous five-file drag/drop or folder selection for the fixed package
 
+> **Metric note:** The video captured an earlier `22/22` build that still counted a derived public-price-to-XLSX row link.
+> Final provenance review removed that link because the API item had no exact document-item match. The validated public manifest reports `21/21` logical Evidence jumps, `26` physical text/cell targets, and `0` fallbacks; public-price provenance remains separate from document Evidence.
+
 ![Dual A4 overview](screenshots/01_dual_a4_overview.png)
 
 ## Problem
