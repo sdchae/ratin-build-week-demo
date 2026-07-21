@@ -19,7 +19,7 @@
 - Cached GPT schema and digest validation: **PASS**
 - Unauthorized-number rejection tests: **PASS**
 - PUBLIC API provenance drawer: **PASS**
-- Automated tests: **17 passed**
+- Automated tests: **18 passed**
 - Browser console errors in final QA: **0**
 - Public export security/privacy audit: **PASS**
 

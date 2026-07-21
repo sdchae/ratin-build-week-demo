@@ -17,6 +17,17 @@ PROOF_DIR = ROOT / "proofs"
 BINDING_PATH = DATA_DIR / "evidence_binding_manifest.public.json"
 EXPORT_MANIFEST_PATH = DATA_DIR / "public_export_manifest.json"
 AUDIT_PATH = PROOF_DIR / "PUBLIC_EXPORT_AUDIT.json"
+MANIFEST_TEXT_SUFFIXES = {
+    ".example",
+    ".html",
+    ".js",
+    ".json",
+    ".md",
+    ".ps1",
+    ".py",
+    ".txt",
+}
+MANIFEST_TEXT_NAMES = {".gitattributes", ".gitignore", "LICENSE"}
 
 
 def read_json(path: Path) -> Any:
@@ -34,6 +45,13 @@ def sha256_file(path: Path) -> str:
         for block in iter(lambda: source.read(1024 * 1024), b""):
             digest.update(block)
     return digest.hexdigest()
+
+
+def canonical_manifest_bytes(path: Path) -> bytes:
+    payload = path.read_bytes()
+    if path.suffix.lower() in MANIFEST_TEXT_SUFFIXES or path.name in MANIFEST_TEXT_NAMES:
+        payload = payload.replace(b"\r\n", b"\n").replace(b"\r", b"\n")
+    return payload
 
 
 def relative_files() -> list[Path]:
@@ -266,11 +284,12 @@ def write_export_manifest() -> None:
     for path in relative_files():
         if path.resolve() in excluded:
             continue
+        payload = canonical_manifest_bytes(path)
         records.append(
             {
                 "relative_path": path.relative_to(ROOT).as_posix(),
-                "sha256": sha256_file(path),
-                "size_bytes": path.stat().st_size,
+                "sha256": hashlib.sha256(payload).hexdigest(),
+                "size_bytes": len(payload),
             }
         )
     write_json(

@@ -1,6 +1,6 @@
 {
   "schema_version": "ratin.public_export_manifest.v1",
-  "generated_at": "2026-07-21T22:07:36+00:00",
+  "generated_at": "2026-07-21T22:14:20+00:00",
   "manifest_scope_excludes": [
     "demo_data/public_export_manifest.json",
     "proofs/PUBLIC_EXPORT_AUDIT.json"
@@ -44,23 +44,23 @@
     },
     {
       "relative_path": "demo_data/demo_evidence_packet.json",
-      "sha256": "1690210412dd3f450dc74971504d6d84cd5d91da03887214f0d63d627bce9513",
-      "size_bytes": 21769
+      "sha256": "ee5a2e12261aee7d40cd7188b368bf0adae3f93ed56386f5d634bdc6f7a93d61",
+      "size_bytes": 21138
     },
     {
       "relative_path": "demo_data/evidence_binding_manifest.public.json",
-      "sha256": "398cf7534a31c26fe1a5e531bfe5fec00c53ff04ac1f79fcccaa1352659191e2",
-      "size_bytes": 25437
+      "sha256": "f91f46d4b124540241c1314a961375a92ff19979303cc46d492180f47830a88b",
+      "size_bytes": 24768
     },
     {
       "relative_path": "demo_data/public_api_provenance.json",
-      "sha256": "2c1a3abd61b46bd9a66cadacc620509feea833a15b0bdc1d94b207d30aa61d08",
-      "size_bytes": 9633
+      "sha256": "2c9bb9d5554eee6f3d1d588f6e7e9088617e8bc4a7386b535d5122cbc2572601",
+      "size_bytes": 9393
     },
     {
       "relative_path": "demo_data/source_package_manifest.public.json",
-      "sha256": "e107b7c5e0191aaa57686156a035ec04959c98e4b8eadeb87c56cd05359c575a",
-      "size_bytes": 2483
+      "sha256": "880441751031811fd1d39dc8efa49bb42d10c291a340d73a2a0d1af41e652b7a",
+      "size_bytes": 2425
     },
     {
       "relative_path": "docs/ARCHITECTURE_PUBLIC.md",
@@ -84,8 +84,8 @@
     },
     {
       "relative_path": "docs/TESTING.md",
-      "sha256": "dc3b904cb17772776df5a830c7c0c88829a9b7fdeba26670023892d90c5669e9",
-      "size_bytes": 814
+      "sha256": "0bb7174cbf2f926fe92e9406134c73dd87c427e8d20cb81841eb9b8e1ad31cc1",
+      "size_bytes": 891
     },
     {
       "relative_path": "evidence/01_public_notice_detail_sanitized.pdf",
@@ -124,18 +124,18 @@
     },
     {
       "relative_path": "proofs/ANCHOR_NON_HARDCODED_PROOF.public.json",
-      "sha256": "c06e84ebbd03a175c60fffbe4c9e9ec113d1bc8f34c30115a44cc47ec8b52a2f",
-      "size_bytes": 418
+      "sha256": "c0ae8239550b7682bce76f1b0ff2b60a9f8dc7b501333750e026db74308e52db",
+      "size_bytes": 406
     },
     {
       "relative_path": "proofs/ANCHOR_NON_HARDCODED_PROOF.public.md",
-      "sha256": "c03541705c8d8733e0032f1ea0101118d2dbc13dc11b9a043b497a7a6a634c8c",
-      "size_bytes": 394
+      "sha256": "276555d57127e423b63bf711ef8287abf5b86b1891fa0430101e18663a4005ef",
+      "size_bytes": 385
     },
     {
       "relative_path": "proofs/ANCHOR_STATIC_SCAN.public.txt",
-      "sha256": "3b13696e7e4c27deb0098e99d5aacb9ea37311fb4d1167bc8cff0470a4c921fe",
-      "size_bytes": 76
+      "sha256": "0efc09888c5df940f7791217ff7effdf4cdc0fbd2b35764c49e3d720ee316092",
+      "size_bytes": 72
     },
     {
       "relative_path": "proofs/FB3_METRIC_PROVENANCE_PUBLIC.md",
@@ -144,12 +144,12 @@
     },
     {
       "relative_path": "proofs/JUMP_VALIDATION_SUMMARY.json",
-      "sha256": "e5a830b85fe1162c78b39449a174cd82312a246372383a83e5ef41db2ba817d9",
-      "size_bytes": 299
+      "sha256": "10b65814a25b99a7a7d25840e60e5b49f5d1b10631af91948a3fb2fb51fccceb",
+      "size_bytes": 288
     },
     {
       "relative_path": "PUBLIC_REPOSITORY_CLOSEOUT.md",
-      "sha256": "c4bee1e2f8f3235f52c2be6e2b3404b705b6f145432462cc0efce7914905fed5",
+      "sha256": "d4e8d10a5baa47dd8497e5b82cd7ef6f14728ef5f9ae6aad9fce361aa2198a6d",
       "size_bytes": 1624
     },
     {
@@ -159,7 +159,7 @@
     },
     {
       "relative_path": "README.md",
-      "sha256": "cf80f5bb07546b794bdb660b3c98325921f342ea095dd2136499958a9721fa40",
+      "sha256": "b9271ebc4496f230c00ef84e457d1240b0b906769d30625f7041e74450529bd8",
       "size_bytes": 9483
     },
     {
@@ -234,8 +234,8 @@
     },
     {
       "relative_path": "tests/test_public_paths.py",
-      "sha256": "9be30210919ed8f7190b9da02e0965deac4471fa2805ec15f2200b827063fa3e",
-      "size_bytes": 1149
+      "sha256": "af9a8d09fce861bb010de1efcbfb7016ae34e1549d3de03a36f23efd8541cda3",
+      "size_bytes": 2069
     },
     {
       "relative_path": "THIRD_PARTY_NOTICES.md",
@@ -244,8 +244,8 @@
     },
     {
       "relative_path": "tools/build_public_proofs.py",
-      "sha256": "e0d6e8e57e53db3fd8627d3eb3444e19d3b5ce5ca07d923d19b801bfdc05fd0e",
-      "size_bytes": 15302
+      "sha256": "7bc82ad70fd19ce6cdd7fbb6f8561128591ca64c6b4d9f8964f116a55d7dd8b1",
+      "size_bytes": 15822
     }
   ]
 }

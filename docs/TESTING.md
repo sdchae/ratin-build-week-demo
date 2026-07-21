@@ -25,6 +25,7 @@ The public tests verify:
 - Strict decision schema and Evidence-ID authorization
 - Unauthorized-number rejection
 - Runtime-relative public paths
+- Cross-clone public export manifest hashes with normalized text line endings
 - Absence of private HWP/HWPX, internal RUN paths, secrets, and oversized files
 - Upload button multi-file drag/drop wiring
 
@@ -33,4 +34,3 @@ Regenerate the audit and proof artifacts before the tests:
 ```powershell
 python tools\build_public_proofs.py
 ```
-
