@@ -1,0 +1,37 @@
+{
+  "schema_version": "ratin.gpt56_live_call_proof.public.v1",
+  "status": "REJECTED_BY_LOCAL_VALIDATOR",
+  "attempt_observed_complete_at_utc": "2026-07-21T22:32:47.7538962Z",
+  "requested_model": "gpt-5.6",
+  "returned_model": null,
+  "response_id": null,
+  "request_status": "RESPONSE_RECEIVED_LOCAL_VALIDATION_REJECTED",
+  "structured_output_parse": "PASS",
+  "local_schema_and_policy_validation": "FAIL",
+  "rejection_error": "Not Found in Package must not cite unrelated Evidence",
+  "input_packet": {
+    "path": "demo_data/demo_evidence_packet.json",
+    "sha256": "1690210412dd3f450dc74971504d6d84cd5d91da03887214f0d63d627bce9513"
+  },
+  "contract_digests": {
+    "source_digest": "bf59f919f69ba80b6a5ebbcfa6bd9e5b9337aaac9058744e7f02d5ac07c3b730",
+    "schema_digest": "8c01dad56f3e61780f6294b16acad167dcf382ffa4a7c61a2faf2873b0518601",
+    "prompt_digest": "eb312497776fcf7c8f2ef9a338c94a9482a38f55619ab64959fa323b5807fccc"
+  },
+  "actual_response_sha256": null,
+  "runtime_cache": {
+    "path": ".runtime/cached_gpt_response.json",
+    "written": false,
+    "sha256": null
+  },
+  "frozen_cache": {
+    "path": "demo_data/cached_gpt_response.json",
+    "before_sha256": "cd23170db07d18f25be21a34d62710f61f79a831d5aab3accdb761abe592941b",
+    "after_sha256": "cd23170db07d18f25be21a34d62710f61f79a831d5aab3accdb761abe592941b",
+    "changed": false
+  },
+  "live_cache_comparison": "NOT_AVAILABLE_RESPONSE_REJECTED_BEFORE_CACHE_WRITE",
+  "api_key_recorded": false,
+  "local_absolute_path_recorded": false,
+  "private_run_id_recorded": false
+}

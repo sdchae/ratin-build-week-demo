@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/sdchae/ratin-build-week-demo/proofs/gpt56_live_call_proof.schema.json",
+  "title": "RATIN GPT-5.6 live-call public proof",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "status",
+    "attempt_observed_complete_at_utc",
+    "requested_model",
+    "returned_model",
+    "response_id",
+    "request_status",
+    "structured_output_parse",
+    "local_schema_and_policy_validation",
+    "rejection_error",
+    "input_packet",
+    "contract_digests",
+    "actual_response_sha256",
+    "runtime_cache",
+    "frozen_cache",
+    "live_cache_comparison",
+    "api_key_recorded",
+    "local_absolute_path_recorded",
+    "private_run_id_recorded"
+  ],
+  "properties": {
+    "schema_version": { "const": "ratin.gpt56_live_call_proof.public.v1" },
+    "status": { "enum": ["VALID", "REJECTED_BY_LOCAL_VALIDATOR", "REQUEST_FAILED"] },
+    "attempt_observed_complete_at_utc": { "type": "string", "format": "date-time" },
+    "requested_model": { "type": "string", "minLength": 1 },
+    "returned_model": { "type": ["string", "null"] },
+    "response_id": { "type": ["string", "null"] },
+    "request_status": { "type": "string", "minLength": 1 },
+    "structured_output_parse": { "enum": ["PASS", "FAIL", "NOT_AVAILABLE"] },
+    "local_schema_and_policy_validation": { "enum": ["PASS", "FAIL", "NOT_AVAILABLE"] },
+    "rejection_error": { "type": ["string", "null"] },
+    "input_packet": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256"],
+      "properties": {
+        "path": { "type": "string", "minLength": 1 },
+        "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
+      }
+    },
+    "contract_digests": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_digest", "schema_digest", "prompt_digest"],
+      "properties": {
+        "source_digest": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+        "schema_digest": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+        "prompt_digest": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
+      }
+    },
+    "actual_response_sha256": { "type": ["string", "null"], "pattern": "^[0-9a-f]{64}$" },
+    "runtime_cache": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "written", "sha256"],
+      "properties": {
+        "path": { "type": "string", "minLength": 1 },
+        "written": { "type": "boolean" },
+        "sha256": { "type": ["string", "null"], "pattern": "^[0-9a-f]{64}$" }
+      }
+    },
+    "frozen_cache": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "before_sha256", "after_sha256", "changed"],
+      "properties": {
+        "path": { "type": "string", "minLength": 1 },
+        "before_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+        "after_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+        "changed": { "type": "boolean" }
+      }
+    },
+    "live_cache_comparison": { "type": "string", "minLength": 1 },
+    "api_key_recorded": { "const": false },
+    "local_absolute_path_recorded": { "const": false },
+    "private_run_id_recorded": { "const": false }
+  }
+}

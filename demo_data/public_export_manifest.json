@@ -1,11 +1,11 @@
 {
   "schema_version": "ratin.public_export_manifest.v1",
-  "generated_at": "2026-07-21T22:14:20+00:00",
+  "generated_at": "2026-07-21T22:39:23+00:00",
   "manifest_scope_excludes": [
     "demo_data/public_export_manifest.json",
     "proofs/PUBLIC_EXPORT_AUDIT.json"
   ],
-  "file_count": 48,
+  "file_count": 53,
   "files": [
     {
       "relative_path": ".env.example",
@@ -78,9 +78,19 @@
       "size_bytes": 1260
     },
     {
+      "relative_path": "docs/GPT56_LIVE_CALL_PROOF.md",
+      "sha256": "c85ff2b59e70e738adce9836d6d368acc3e15b6c366850cf602ffcff7af735f8",
+      "size_bytes": 2308
+    },
+    {
       "relative_path": "docs/LIMITATIONS.md",
       "sha256": "25363f7ed9de754fd83d32fd256f157eb91b9548fa7e5e271975ce75177dad55",
       "size_bytes": 835
+    },
+    {
+      "relative_path": "docs/METRIC_ACCOUNTING.md",
+      "sha256": "fa39713b51cff3e2ded68d6ce8960a7c32a46bf530078e42720a96b972130938",
+      "size_bytes": 3339
     },
     {
       "relative_path": "docs/TESTING.md",
@@ -143,6 +153,16 @@
       "size_bytes": 732
     },
     {
+      "relative_path": "proofs/gpt56_live_call_proof.public.json",
+      "sha256": "420fc7ef879645283fe692f0abcd9802598f1cd575ac916dbf7b2dab2327819d",
+      "size_bytes": 1550
+    },
+    {
+      "relative_path": "proofs/gpt56_live_call_proof.schema.json",
+      "sha256": "600d3c7e4c6ba0140f43c6102608ffa4c8a920cc32815587d8ef359c2f3f7e19",
+      "size_bytes": 3292
+    },
+    {
       "relative_path": "proofs/JUMP_VALIDATION_SUMMARY.json",
       "sha256": "10b65814a25b99a7a7d25840e60e5b49f5d1b10631af91948a3fb2fb51fccceb",
       "size_bytes": 288
@@ -159,8 +179,8 @@
     },
     {
       "relative_path": "README.md",
-      "sha256": "018fe31de3d02b52b5bb1f51aaa6f7d86d2e0aa887ae087ad6aa031f78c2e0b4",
-      "size_bytes": 9893
+      "sha256": "d4ee2e22f904f6caa9c71f0d508642209f780d2721b4de1ad703d78d7a9a9f39",
+      "size_bytes": 10694
     },
     {
       "relative_path": "requirements.txt",
@@ -206,6 +226,11 @@
       "relative_path": "SECURITY.md",
       "sha256": "3b589f5fc3fe07cbb41513051dded5a2ad41cbf4d18b93cf2987ae2d3fd26edd",
       "size_bytes": 1121
+    },
+    {
+      "relative_path": "SUBMISSION_DRAFT.md",
+      "sha256": "75efd38d05471ff99e3dd0f5496d430b07db32cebdd221a90c5eeeb689a4a6d0",
+      "size_bytes": 10194
     },
     {
       "relative_path": "tests/conftest.py",

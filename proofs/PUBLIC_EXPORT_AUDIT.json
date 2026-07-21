@@ -1,6 +1,6 @@
 {
   "schema_version": "ratin.public_export_audit.v1",
-  "generated_at": "2026-07-21T22:14:20+00:00",
+  "generated_at": "2026-07-21T22:39:23+00:00",
   "status": "PASS",
   "secret_findings": 0,
   "absolute_path_findings": 0,
@@ -10,8 +10,8 @@
   "oversized_file_findings": 0,
   "private_source_or_forbidden_directory_findings": 0,
   "gitleaks_status": "NOT_INSTALLED_STATIC_EQUIVALENT_USED",
-  "files_scanned": 50,
-  "total_bytes": 654966,
+  "files_scanned": 55,
+  "total_bytes": 677785,
   "details": {
     "secret": [],
     "absolute_path": [],

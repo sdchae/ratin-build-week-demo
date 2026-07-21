@@ -41,8 +41,11 @@ All values below are read from the frozen public packet and manifests.
 - Cached mode that requires no API key
 - Simultaneous five-file drag/drop or folder selection for the fixed package
 
-> **Metric note:** The video captured an earlier `22/22` build that still counted a derived public-price-to-XLSX row link.
-> Final provenance review removed that link because the API item had no exact document-item match. The validated public manifest reports `21/21` logical Evidence jumps, `26` physical text/cell targets, and `0` fallbacks; public-price provenance remains separate from document Evidence.
+> **Metric note:** The video's closing `22` reflects the pre-final provenance
+> count. Final review found that a public-price API candidate did not exactly
+> match the XLSX item, so the derived link was removed instead of overstating its
+> evidence. The authoritative result is `21/21` logical Evidence links, `26`
+> physical targets, and `0` fallbacks. See [Metric Accounting](docs/METRIC_ACCOUNTING.md).
 
 ![Dual A4 overview](screenshots/01_dual_a4_overview.png)
 
@@ -93,6 +96,17 @@ GPT-5.6 responsibilities:
 GPT-5.6 does not extract source text, generate a bbox, recalculate an amount,
 create a statistic, or invent an Evidence ID.
 
+## Key design decisions
+
+- Keep the proprietary canonical pipeline and internal RUNs outside this export.
+- Evaluate one fixed, sanitized package instead of presenting a general uploader.
+- Require exact text/cell bindings and fail closed instead of guessing a page.
+- Keep document Evidence separate from dated public-API provenance.
+- Let deterministic code own facts, coordinates, arithmetic, and validation.
+- Let GPT-5.6 interpret only verified context under strict schema, Evidence-ID,
+  and allowed-number gates.
+- Never infer bidder eligibility without a bidder profile.
+
 ## Run locally
 
 Requirements: Python 3.11 or newer and PowerShell.
@@ -135,6 +149,10 @@ $env:OPENAI_MODEL="gpt-5.6"
 The frozen public cache records requested model `gpt-5.6` and validated returned
 model `gpt-5.6-sol`. A live failure falls back only to a digest-matching runtime
 cache or the validated frozen cache.
+
+The final submission proof attempt reached the live structured-output path but
+was rejected by the local fail-closed validator and did not replace either cache.
+See [GPT-5.6 live-call proof](docs/GPT56_LIVE_CALL_PROOF.md).
 
 ## Testing
 
